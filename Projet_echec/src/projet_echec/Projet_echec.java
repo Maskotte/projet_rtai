@@ -5,6 +5,9 @@
  */
 package projet_echec;
 
+import java.awt.GridLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author qgers
@@ -16,6 +19,10 @@ public class Projet_echec {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+            String title = "My Chess Board";
+		
+		Board chessBoard = new Board(title);
     }
+    
     
 }
