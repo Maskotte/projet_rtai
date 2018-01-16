@@ -7,6 +7,8 @@ package projet_echec;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -47,12 +49,24 @@ public class Board extends JFrame {
 
 			if (i % 2 == 0) { // Toutes les 2 cases on ajoute un bouton noir
 				chessButton = new JButton();
+                                chessButton.addActionListener(new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent ae) {
+                                        System.out.println("Bouton pair"); //To change body of generated methods, choose Tools | Templates.
+                                    }
+                                });
 				chessButton.setBackground(blackColor);
                                 listButton.add(chessButton);
 				add(chessButton);
 			} else {
 				
 				chessButton = new JButton();
+                                chessButton.addActionListener(new ActionListener() {
+                                    @Override
+                                    public void actionPerformed(ActionEvent ae) {
+                                        System.out.println("Bouton impair"); //To change body of generated methods, choose Tools | Templates.
+                                    }
+                                });
 				chessButton.setBackground(whiteColor);
                                 listButton.add(chessButton);
 				add(chessButton);
@@ -163,5 +177,6 @@ public class Board extends JFrame {
            }
            
        }
+       
    
 }
