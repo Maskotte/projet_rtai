@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -24,7 +25,7 @@ public class Board extends JFrame {
 
     public static final int squareCount = 64;
     ArrayList<JButton> listButton = new ArrayList<>();
-    JButton Plateau[][];
+    JLabel Plateau[][];
     /*public ImageIcon chevalierB = new ImageIcon("icons\\blanches\\CB_B.png");
     public ImageIcon reineB = new ImageIcon("icons\\blanches\\DB_B.png");
     public ImageIcon roiB = new ImageIcon("icons\\blanches\\RB_B.png");
@@ -60,8 +61,8 @@ public class Board extends JFrame {
 		Color blackColor = new Color(209, 139, 71);
 		Color whiteColor = new Color(255, 206, 158);
 
-		JButton chessButton = null;
-                Plateau = new JButton[8][8];
+		JLabel chessButton = null;
+                Plateau = new JLabel[8][8];
 		
 		/*for (int i = 1; i <= squareCount; i++) {
 
@@ -106,14 +107,16 @@ public class Board extends JFrame {
                     for(int j=0; j<8; j++)
                     {
                         if (j % 2 == 0) { // Toutes les 2 cases on ajoute un bouton noir
-				chessButton = new JButton();
+				chessButton = new JLabel();
 				chessButton.setBackground(blackColor);
+                                chessButton.setOpaque(true);
                                 Plateau[i][j] = chessButton;
                                 this.add(chessButton);
 			} else {
 				
-				chessButton = new JButton();
+				chessButton = new JLabel();
 				chessButton.setBackground(whiteColor);
+                                chessButton.setOpaque(true);
                                 Plateau[i][j] = chessButton;
 				this.add(chessButton);
 			}
@@ -138,11 +141,6 @@ public class Board extends JFrame {
                 Plateau[1][5].setIcon(pionN);
                 Plateau[1][6].setIcon(pionN);
                 Plateau[1][7].setIcon(pionN);
-                
-                /*for(int i =0; i<=8; i++ )
-                {
-                   Plateau[1][i].setIcon(pionN);
-                }*/
                 Plateau[7][0].setIcon(tourB);
                 Plateau[7][1].setIcon(chevalierB);
                 Plateau[7][2].setIcon(fouB);
@@ -159,6 +157,7 @@ public class Board extends JFrame {
                 Plateau[6][5].setIcon(pionB);
                 Plateau[6][6].setIcon(pionB);
                 Plateau[6][7].setIcon(pionB);
+                 
                 
 		this.setTitle(title); // Setting the title of board
 		this.setLayout(new GridLayout(8, 8)); // GridLayout will arrange elements in Grid Manager 8 X 8
@@ -167,7 +166,7 @@ public class Board extends JFrame {
 
 	}
         
-       public void PionBlanc(ArrayList listeButon)
+      /* public void PionBlanc(ArrayList listeButon)
        {
            JButton unbouton = new JButton();
            
@@ -253,7 +252,7 @@ public class Board extends JFrame {
                unbouton.setIcon(pionN);
            }
            
-       }
+       }*/
 
        
    
