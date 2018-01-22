@@ -6,6 +6,7 @@
 package projet_echec;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,6 +24,7 @@ public class Board extends JFrame {
 
     public static final int squareCount = 64;
     ArrayList<JButton> listButton = new ArrayList<>();
+    JButton Plateau[][];
     public ImageIcon chevalierB = new ImageIcon("icons\\blanches\\CB_B.png");
     public ImageIcon reineB = new ImageIcon("icons\\blanches\\DB_B.png");
     public ImageIcon roiB = new ImageIcon("icons\\blanches\\RB_B.png");
@@ -36,6 +38,7 @@ public class Board extends JFrame {
     public ImageIcon tourN = new ImageIcon("icons\\noires\\TN_N.png");
     public ImageIcon pionN = new ImageIcon("icons\\noires\\PN_N.png");
     
+    
 
 	public Board(String title) {
 		
@@ -44,8 +47,9 @@ public class Board extends JFrame {
 		Color whiteColor = Color.WHITE;
 
 		JButton chessButton = null;
+                Plateau = new JButton[8][8];
 		
-		for (int i = 1; i <= squareCount; i++) {
+		/*for (int i = 1; i <= squareCount; i++) {
 
 			if (i % 2 == 0) { // Toutes les 2 cases on ajoute un bouton noir
 				chessButton = new JButton();
@@ -81,8 +85,33 @@ public class Board extends JFrame {
 			
 		}
                 this.PionNoir(listButton);
-                this.PionBlanc(listButton);
+                this.PionBlanc(listButton);*/
 
+                for(int i =0; i<8; i++)
+                {
+                    for(int j=0; j<8; j++)
+                    {
+                        if (j % 2 == 0) { // Toutes les 2 cases on ajoute un bouton noir
+				chessButton = new JButton();
+				chessButton.setBackground(blackColor);
+                                Plateau[i][j] = chessButton;
+                                this.add(chessButton);
+			} else {
+				
+				chessButton = new JButton();
+				chessButton.setBackground(whiteColor);
+                                Plateau[i][j] = chessButton;
+				this.add(chessButton);
+			}
+                    }
+                    Color temp = blackColor;
+                    blackColor = whiteColor;
+                    whiteColor = temp;
+                }
+                
+                
+                
+                
 		this.setTitle(title); // Setting the title of board
 		this.setLayout(new GridLayout(8, 8)); // GridLayout will arrange elements in Grid Manager 8 X 8
 		this.setSize(650, 650); // Size of the chess board
@@ -177,6 +206,7 @@ public class Board extends JFrame {
            }
            
        }
+
        
    
 }
