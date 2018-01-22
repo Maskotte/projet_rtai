@@ -25,7 +25,7 @@ public class Board extends JFrame {
     public static final int squareCount = 64;
     ArrayList<JButton> listButton = new ArrayList<>();
     JButton Plateau[][];
-    public ImageIcon chevalierB = new ImageIcon("icons\\blanches\\CB_B.png");
+    /*public ImageIcon chevalierB = new ImageIcon("icons\\blanches\\CB_B.png");
     public ImageIcon reineB = new ImageIcon("icons\\blanches\\DB_B.png");
     public ImageIcon roiB = new ImageIcon("icons\\blanches\\RB_B.png");
     public ImageIcon fouB = new ImageIcon("icons\\blanches\\FB_B.png");
@@ -36,15 +36,29 @@ public class Board extends JFrame {
     public ImageIcon roiN = new ImageIcon("icons\\noires\\RN_N.png");
     public ImageIcon fouN = new ImageIcon("icons\\noires\\FN_N.png");
     public ImageIcon tourN = new ImageIcon("icons\\noires\\TN_N.png");
-    public ImageIcon pionN = new ImageIcon("icons\\noires\\PN_N.png");
+    public ImageIcon pionN = new ImageIcon("icons\\noires\\PN_N.png");*/
+    
+    public ImageIcon chevalierB = new ImageIcon("icons\\blanches transparentes\\cavalierB.png");
+    public ImageIcon reineB = new ImageIcon("icons\\blanches transparentes\\reineB.png");
+    public ImageIcon roiB = new ImageIcon("icons\\blanches transparentes\\roiB.png");
+    public ImageIcon fouB = new ImageIcon("icons\\blanches transparentes\\fouB.png");
+    public ImageIcon tourB = new ImageIcon("icons\\blanches transparentes\\tourB.png");
+    public ImageIcon pionB = new ImageIcon("icons\\blanches transparentes\\pionB.png");
+    public ImageIcon chevalierN = new ImageIcon("icons\\noires transparentes\\cavalierN.png");
+    public ImageIcon reineN = new ImageIcon("icons\\noires transparentes\\reineN.png");
+    public ImageIcon roiN = new ImageIcon("icons\\noires transparentes\\roiN.png");
+    public ImageIcon fouN = new ImageIcon("icons\\noires transparentes\\fouN.png");
+    public ImageIcon tourN = new ImageIcon("icons\\noires transparentes\\tourN.png");
+    public ImageIcon pionN = new ImageIcon("icons\\noires transparentes\\pionN.png");
+    
     
     
 
 	public Board(String title) {
 		
 		// Defini la couleur des cases
-		Color blackColor = Color.BLACK;
-		Color whiteColor = Color.WHITE;
+		Color blackColor = new Color(209, 139, 71);
+		Color whiteColor = new Color(255, 206, 158);
 
 		JButton chessButton = null;
                 Plateau = new JButton[8][8];
