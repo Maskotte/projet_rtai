@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projet_echec;
+package Piece;
 
 /**
  *
- * @author quent
+ * @author qgers
  */
-public class Case{
+public class Pion {
+    private int[][] position;
     
     
-    
+    public int getposition(int i, int j)
+    {
+        return position[i][j];
+    }
 }

@@ -7,6 +7,7 @@ package projet_echec;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.Icon;
 
 /**
  *
@@ -15,6 +16,7 @@ import java.awt.event.MouseEvent;
 public class CaseControler extends MouseAdapter {
         int i;
         int j;
+        
         
         private ChessModel chess;
 
@@ -26,12 +28,7 @@ public class CaseControler extends MouseAdapter {
 
         @Override
         public void mouseClicked(MouseEvent e)
-        {
-            // Si la case est vide
-           // if(chess.getCase(i, j) == 1) {
-                // On joue dans le modèle
-                //chess.play(i, j);
-                System.out.println("Vous êtes dans " + i + j);
-            //}
+        {            
+            System.out.println(""+i +j);
         }
 }
