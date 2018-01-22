@@ -23,6 +23,7 @@ import javax.swing.JPanel;
  */
 public class Board extends JFrame {
 
+    private ChessModel chess;
     public static final int squareCount = 64;
     ArrayList<JButton> listButton = new ArrayList<>();
     JLabel Plateau[][];
@@ -55,14 +56,16 @@ public class Board extends JFrame {
     
     
 
-	public Board(String title) {
+	public Board(ChessModel title) {
 		
 		// Defini la couleur des cases
 		Color blackColor = new Color(209, 139, 71);
 		Color whiteColor = new Color(255, 206, 158);
-
+                
+                this.chess = title;
 		JLabel chessButton = null;
                 Plateau = new JLabel[8][8];
+                
 		
 		/*for (int i = 1; i <= squareCount; i++) {
 
@@ -111,6 +114,7 @@ public class Board extends JFrame {
 				chessButton.setBackground(blackColor);
                                 chessButton.setOpaque(true);
                                 Plateau[i][j] = chessButton;
+                                Plateau[i][j].setHorizontalAlignment(JLabel.CENTER);
                                 this.add(chessButton);
 			} else {
 				
@@ -118,8 +122,11 @@ public class Board extends JFrame {
 				chessButton.setBackground(whiteColor);
                                 chessButton.setOpaque(true);
                                 Plateau[i][j] = chessButton;
+                                Plateau[i][j].setHorizontalAlignment(JLabel.CENTER);
 				this.add(chessButton);
 			}
+                        Plateau[i][j].addMouseListener(
+                        new CaseControler(i,j, this.chess));
                     }
                     Color temp = blackColor;
                     blackColor = whiteColor;
@@ -132,7 +139,7 @@ public class Board extends JFrame {
                 Plateau[0][4].setIcon(reineN);
                 Plateau[0][5].setIcon(fouN);
                 Plateau[0][6].setIcon(chevalierN);
-                Plateau[0][7].setIcon(pionN);
+                Plateau[0][7].setIcon(tourN);
                 Plateau[1][0].setIcon(pionN);
                 Plateau[1][1].setIcon(pionN);
                 Plateau[1][2].setIcon(pionN);
@@ -148,7 +155,7 @@ public class Board extends JFrame {
                 Plateau[7][4].setIcon(reineB);
                 Plateau[7][5].setIcon(fouB);
                 Plateau[7][6].setIcon(chevalierB);
-                Plateau[7][7].setIcon(pionB);
+                Plateau[7][7].setIcon(tourB);
                 Plateau[6][0].setIcon(pionB);
                 Plateau[6][1].setIcon(pionB);
                 Plateau[6][2].setIcon(pionB);
@@ -159,7 +166,7 @@ public class Board extends JFrame {
                 Plateau[6][7].setIcon(pionB);
                  
                 
-		this.setTitle(title); // Setting the title of board
+		this.setTitle("Jeu échec"); // Setting the title of board
 		this.setLayout(new GridLayout(8, 8)); // GridLayout will arrange elements in Grid Manager 8 X 8
 		this.setSize(650, 650); // Size of the chess board
 		this.setVisible(true);

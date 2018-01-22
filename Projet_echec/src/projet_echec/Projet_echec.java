@@ -19,9 +19,10 @@ public class Projet_echec {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-            String title = "My Chess Board ";
+            //String title = "My Chess Board ";
+            ChessModel chess = new ChessModel();
 		
-		Board chessBoard = new Board(title);
+		Board chessBoard = new Board(chess);
     }
     
     

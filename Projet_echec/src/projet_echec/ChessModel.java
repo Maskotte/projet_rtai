@@ -5,12 +5,19 @@
  */
 package projet_echec;
 
-import java.awt.event.MouseAdapter;
-
 /**
  *
- * @author qgers
+ * @author tok
  */
-public class CaseControleur extends MouseAdapter{
+public class ChessModel {
     
+    private int[][] plateau;
+    
+    public int getCase(int i, int j) {
+        return plateau[i][j];
+    }
+    
+    public void play(int i, int j) {
+        
+    }
 }
