@@ -91,7 +91,7 @@ public class Board extends JFrame {
 				this.add(chessButton);
 			}
                         Plateau[i][j].addMouseListener(
-                        new CaseControler(i,j, this.chess));
+                        new CaseControler(i,j, this.chess,this));
                     }
                     Color temp = blackColor;
                     blackColor = whiteColor;

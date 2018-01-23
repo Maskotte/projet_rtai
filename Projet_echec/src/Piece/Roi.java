@@ -9,6 +9,6 @@ package Piece;
  *
  * @author qgers
  */
-public class Roi {
+public class Roi extends Case{
     
 }

@@ -9,6 +9,6 @@ package Piece;
  *
  * @author qgers
  */
-public class Tour {
+public class Tour extends Case{
     
 }

@@ -3,21 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Piece;
-
-import projet_echec.ChessModel;
+package projet_echec;
 
 /**
  *
  * @author quent
  */
-public class Case{
-    
-    
-    
-    
-    public void deplacer(){
-           
-    }
-    
+interface Observateur {
+    void avertir(int i, int j);
+    void avertirNewGame();
+    void avertirFinPartie(boolean avecGagnant);
 }

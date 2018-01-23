@@ -9,7 +9,7 @@ package Piece;
  *
  * @author qgers
  */
-public class Pion {
+public class Pion extends Case{
     private int[][] position;
     
     

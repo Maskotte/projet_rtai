@@ -23,6 +23,7 @@ public class Projet_echec {
             ChessModel chess = new ChessModel();
 		
 		Board chessBoard = new Board(chess);
+                
     }
     
     

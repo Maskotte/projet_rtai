@@ -9,6 +9,6 @@ package Piece;
  *
  * @author qgers
  */
-public class Cavalier {
+public class Cavalier extends Case{
     
 }

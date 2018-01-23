@@ -19,16 +19,20 @@ public class CaseControler extends MouseAdapter {
         
         
         private ChessModel chess;
+        private Board echequier;
 
-        public CaseControler(int _i, int _j, ChessModel chess){
+        public CaseControler(int _i, int _j, ChessModel chess,Board echequier){
             i = _i;
             j = _j;
             this.chess = chess;
+            this.echequier = echequier;
         }
 
         @Override
         public void mouseClicked(MouseEvent e)
-        {            
-            System.out.println(""+i +j);
+        {        
+            System.out.println("Joueur actuel : "+chess.playersActu);
+            System.out.println("Nombres de coups :"+chess.nbCoups);
+            chess.play(i, j,echequier);
         }
 }

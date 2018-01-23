@@ -3,21 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Piece;
-
-import projet_echec.ChessModel;
+package projet_echec;
 
 /**
  *
  * @author quent
  */
-public class Case{
+public class Joueur {
+    int playersActu = 1;
     
     
     
-    
-    public void deplacer(){
-           
+    public int getJoueur()
+    {
+        return playersActu;
     }
-    
+    public void setValueJoueur(int i, int j)
+    {
+        
+    }
 }
