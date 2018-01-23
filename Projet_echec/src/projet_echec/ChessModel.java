@@ -121,4 +121,18 @@ public class ChessModel {
     }
     
     
+    public void nouvellePartie()
+    {
+        this.playersActu = 1;
+        this.plateau = new int[8][8];
+         
+         
+        System.out.println("Nouvelle partie");
+        
+        
+        nbCoups = 0; // On reset le nombre de coups
+         
+    }
+ 
+    
 }

@@ -17,6 +17,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 /**
@@ -29,6 +32,11 @@ public class Board extends JFrame {
     public static final int squareCount = 64;
     ArrayList<JButton> listButton = new ArrayList<>();
     JLabel Plateau[][];
+    JMenuBar menuBar ;
+    JMenu menu;
+    JMenuItem menu_1;
+    JMenuItem menu_2;
+    
     /*public ImageIcon chevalierB = new ImageIcon("icons\\blanches\\CB_B.png");
     public ImageIcon reineB = new ImageIcon("icons\\blanches\\DB_B.png");
     public ImageIcon roiB = new ImageIcon("icons\\blanches\\RB_B.png");
@@ -63,6 +71,10 @@ public class Board extends JFrame {
 		// Defini la couleur des cases
 		Color blackColor = new Color(209, 139, 71);
 		Color whiteColor = new Color(255, 206, 158);
+                menuBar = new JMenuBar();
+                menu = new JMenu("Fichier");
+                menu_1 = new JMenuItem("Nouvelle Partie");
+                menu_2 = new JMenuItem("Quitter");
                 
                 this.chess = title;
 		JLabel chessButton = null;
@@ -132,6 +144,22 @@ public class Board extends JFrame {
         
                
                 //this.setMenuBar(mb);
+                menuBar.add(menu);
+                menu_1.addActionListener( new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent ae) {
+                        chess.nouvellePartie();
+                    }
+                });
+                menu_2.addActionListener( new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent ae) {
+                        System.exit(1);
+                    }
+                });
+                menu.add(menu_1);
+                menu.add(menu_2);
+                this.setJMenuBar(menuBar);
 		this.setTitle("Jeu échec"); // Setting the title of board
 		this.setLayout(new GridLayout(8, 8)); // GridLayout will arrange elements in Grid Manager 8 X 8
 		this.setSize(650, 650); // Size of the chess board
