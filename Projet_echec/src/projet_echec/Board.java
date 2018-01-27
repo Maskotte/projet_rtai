@@ -164,6 +164,107 @@ public class Board extends JFrame {
 		this.setLayout(new GridLayout(8, 8)); // GridLayout will arrange elements in Grid Manager 8 X 8
 		this.setSize(650, 650); // Size of the chess board
 		this.setVisible(true);
-
 	}
+        
+        
+        
+        /*public void init()
+        {
+            // Defini la couleur des cases
+		Color blackColor = new Color(209, 139, 71);
+		Color whiteColor = new Color(255, 206, 158);
+                menuBar = new JMenuBar();
+                menu = new JMenu("Fichier");
+                menu_1 = new JMenuItem("Nouvelle Partie");
+                menu_2 = new JMenuItem("Quitter");
+                
+                this.chess = title;
+		JLabel chessButton = null;
+                Plateau = new JLabel[8][8];
+                
+		
+                                
+                for(int i =0; i<8; i++)
+                {
+                    for(int j=0; j<8; j++)
+                    {
+                        if (j % 2 == 0) { // Toutes les 2 cases on ajoute un bouton noir
+				chessButton = new JLabel();
+				chessButton.setBackground(blackColor);
+                                chessButton.setOpaque(true);
+                                Plateau[i][j] = chessButton;
+                                Plateau[i][j].setHorizontalAlignment(JLabel.CENTER);
+                                this.add(chessButton);
+			} else {
+				
+				chessButton = new JLabel();
+				chessButton.setBackground(whiteColor);
+                                chessButton.setOpaque(true);
+                                Plateau[i][j] = chessButton;
+                                Plateau[i][j].setHorizontalAlignment(JLabel.CENTER);
+				this.add(chessButton);
+			}
+                        Plateau[i][j].addMouseListener(
+                        new CaseControler(i,j, this.chess,this));
+                    }
+                    Color temp = blackColor;
+                    blackColor = whiteColor;
+                    whiteColor = temp;
+                }
+                Plateau[0][0].setIcon(tourN);
+                Plateau[0][1].setIcon(chevalierN);
+                Plateau[0][2].setIcon(fouN);
+                Plateau[0][3].setIcon(roiN);
+                Plateau[0][4].setIcon(reineN);
+                Plateau[0][5].setIcon(fouN);
+                Plateau[0][6].setIcon(chevalierN);
+                Plateau[0][7].setIcon(tourN);
+                Plateau[1][0].setIcon(pionN);
+                Plateau[1][1].setIcon(pionN);
+                Plateau[1][2].setIcon(pionN);
+                Plateau[1][3].setIcon(pionN);
+                Plateau[1][4].setIcon(pionN);
+                Plateau[1][5].setIcon(pionN);
+                Plateau[1][6].setIcon(pionN);
+                Plateau[1][7].setIcon(pionN);
+                Plateau[7][0].setIcon(tourB);
+                Plateau[7][1].setIcon(chevalierB);
+                Plateau[7][2].setIcon(fouB);
+                Plateau[7][3].setIcon(roiB);
+                Plateau[7][4].setIcon(reineB);
+                Plateau[7][5].setIcon(fouB);
+                Plateau[7][6].setIcon(chevalierB);
+                Plateau[7][7].setIcon(tourB);
+                Plateau[6][0].setIcon(pionB);
+                Plateau[6][1].setIcon(pionB);
+                Plateau[6][2].setIcon(pionB);
+                Plateau[6][3].setIcon(pionB);
+                Plateau[6][4].setIcon(pionB);
+                Plateau[6][5].setIcon(pionB);
+                Plateau[6][6].setIcon(pionB);
+                Plateau[6][7].setIcon(pionB);
+        
+               
+                //this.setMenuBar(mb);
+                menuBar.add(menu);
+                menu_1.addActionListener( new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent ae) {
+                        chess.nouvellePartie();
+                    }
+                });
+                menu_2.addActionListener( new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent ae) {
+                        System.exit(1);
+                    }
+                });
+                menu.add(menu_1);
+                menu.add(menu_2);
+                this.setJMenuBar(menuBar);
+		this.setTitle("Jeu échec"); // Setting the title of board
+		this.setLayout(new GridLayout(8, 8)); // GridLayout will arrange elements in Grid Manager 8 X 8
+		this.setSize(650, 650); // Size of the chess board
+		this.setVisible(true);
+        }*/
 }

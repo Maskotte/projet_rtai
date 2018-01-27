@@ -42,27 +42,30 @@ public class ChessModel {
     }
     
     public void play(int i, int j,Board plateau) {
-        System.out.println("Vous jouez ["+i+"]"+"["+j+"]");
         this.nbCoups ++;
-        int def = -1;
-        int defY = -1;
         this.temp = plateau.Plateau[i][j];
-        if(positionX == -1 && positionY ==-1 )
+        if(this.temp.getIcon() == null && this.temp1 == null)
         {
-            
-            this.temp1 = (ImageIcon) this.temp.getIcon();
-            //System.out.println("Salut");
-            this.setValueJoueur(i, j);
+            System.out.println("Il n'y a pas de pièce sur cette case");
         }
-        else
+        else  
         {
-            plateau.Plateau[positionX][positionY].setIcon(null);
-            plateau.Plateau[i][j].setIcon(temp1);
-            this.temp1 = null;
-            //System.out.println("Bonjour");
-            this.setValueJoueur(-1, -1);
+            if(positionX == -1 && positionY == -1 )
+            {
+
+                this.temp1 = (ImageIcon) this.temp.getIcon();
+                //System.out.println("Salut");
+                this.setValueJoueur(i, j);
+            }
+            else
+            {
+                plateau.Plateau[positionX][positionY].setIcon(null);
+                plateau.Plateau[i][j].setIcon(temp1);
+                this.temp1 = null;
+                //System.out.println("Bonjour");
+                this.setValueJoueur(-1, -1);
+            }
         }
-        
         playersActu = this.getNextJoueur();
     }
     
@@ -125,9 +128,8 @@ public class ChessModel {
     {
         this.playersActu = 1;
         this.plateau = new int[8][8];
-         
-         
         System.out.println("Nouvelle partie");
+        
         
         
         nbCoups = 0; // On reset le nombre de coups

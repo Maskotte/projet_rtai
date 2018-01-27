@@ -31,8 +31,9 @@ public class CaseControler extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e)
         {        
-            System.out.println("Joueur actuel : "+chess.playersActu);
-            System.out.println("Nombres de coups :"+chess.nbCoups);
+            //System.out.println("Joueur actuel : "+chess.playersActu);
+            //System.out.println("Nombres de coups :"+chess.nbCoups);
+            //System.out.println("Vous jouez ["+i+"]"+"["+j+"]");
             chess.play(i, j,echequier);
         }
 }
