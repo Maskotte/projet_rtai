@@ -22,7 +22,7 @@ public class Projet_echec {
             //String title = "My Chess Board ";
             ChessModel chess = new ChessModel();
 		
-		Board chessBoard = new Board(chess);
+            Board chessBoard = new Board(chess);
                 
     }
     

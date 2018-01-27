@@ -8,6 +8,8 @@ package projet_echec;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -16,6 +18,10 @@ import javax.swing.Icon;
 public class CaseControler extends MouseAdapter {
         int i;
         int j;
+        int k;
+        private int[][] plateau;
+        JLabel temp = new JLabel();
+        ImageIcon temp1 = new ImageIcon();
         
         
         private ChessModel chess;
@@ -30,10 +36,28 @@ public class CaseControler extends MouseAdapter {
 
         @Override
         public void mouseClicked(MouseEvent e)
-        {        
-            //System.out.println("Joueur actuel : "+chess.playersActu);
-            //System.out.println("Nombres de coups :"+chess.nbCoups);
-            //System.out.println("Vous jouez ["+i+"]"+"["+j+"]");
-            chess.play(i, j,echequier);
+        {   
+            
+            this.temp = echequier.Plateau[i][j];
+            this.temp1 = (ImageIcon) this.temp.getIcon();
+            
+            boolean valeur = false;
+            if(chess.playersActu == 1)
+            {
+                valeur = echequier.joueur1.verifList(k,this.temp1);
+                System.out.println("Joueur 1 "+valeur);
+            }
+            if(chess.playersActu == 2)
+            {
+                valeur  = echequier.joueur2.verifList(k,this.temp1);
+                System.out.println("Joueur 2 "+valeur);
+                
+            }
+            chess.playersActu = this.chess.getNextJoueur();
+            
+            
+            
+            
+            //chess.play(i, j,k,echequier);
         }
 }

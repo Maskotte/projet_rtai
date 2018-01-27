@@ -5,15 +5,23 @@
  */
 package projet_echec;
 
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author quent
  */
 public class Joueur {
     int playersActu = 1;
+    //Couleur 1-Blanc Couleur 2-Noir
+    int couleur = 0;
+    ArrayList<ImageIcon> listImage = new ArrayList<ImageIcon>();
     
-    
-    
+    public Joueur(int valeurCouleur)
+    {
+        couleur = valeurCouleur;
+    }
     public int getJoueur()
     {
         return playersActu;
@@ -21,5 +29,32 @@ public class Joueur {
     public void setValueJoueur(int i, int j)
     {
         
+    }
+    public void addIcon(ImageIcon pieces)
+    {
+        listImage.add(pieces);
+    }
+    
+    public boolean verifList(int couleur,ImageIcon image)
+    {
+        boolean temp = false;
+        int valeur = this.getCouleur();
+        for (ImageIcon imageIcon : listImage) 
+        {
+            if(image == imageIcon)
+            {
+                return true;
+            }
+            else
+            {
+                temp = false;
+            }
+        }
+        return temp;
+    }
+    
+    public int getCouleur()
+    {
+        return couleur;
     }
 }

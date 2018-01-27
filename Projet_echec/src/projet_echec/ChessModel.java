@@ -41,9 +41,12 @@ public class ChessModel {
         positionY = j;
     }
     
-    public void play(int i, int j,Board plateau) {
+    /*public void play(int i, int j,int k, Board plateau) {
         this.nbCoups ++;
+        
+        //Récupère la case sélectionné
         this.temp = plateau.Plateau[i][j];
+        
         if(this.temp.getIcon() == null && this.temp1 == null)
         {
             System.out.println("Il n'y a pas de pièce sur cette case");
@@ -54,7 +57,6 @@ public class ChessModel {
             {
 
                 this.temp1 = (ImageIcon) this.temp.getIcon();
-                //System.out.println("Salut");
                 this.setValueJoueur(i, j);
             }
             else
@@ -62,12 +64,12 @@ public class ChessModel {
                 plateau.Plateau[positionX][positionY].setIcon(null);
                 plateau.Plateau[i][j].setIcon(temp1);
                 this.temp1 = null;
-                //System.out.println("Bonjour");
                 this.setValueJoueur(-1, -1);
+                playersActu = this.getNextJoueur();
             }
         }
-        playersActu = this.getNextJoueur();
-    }
+        
+    }*/
     
     
     
