@@ -5,10 +5,26 @@
  */
 package Piece;
 
+import projet_echec.Deplacement;
+
 /**
  *
  * @author qgers
  */
 public class Tour extends Case{
     
+    public boolean deplacementPossible(Deplacement d) {
+        /*
+            Le déplacement de la tour étant soit vertical ou horizontal, cela signifie
+            qu'un des deux déplacements vaudra forcément 0. Son déplacement sera donc possible
+            si le produit des deux déplacements vaut donc 0.
+        */
+        
+        boolean test = false;
+        
+        if((d.getDeplacementX() * d.getDeplacementY()) == 0) {
+            test = true;
+        }
+        return test;
+    }
 }

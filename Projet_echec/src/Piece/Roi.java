@@ -5,10 +5,29 @@
  */
 package Piece;
 
+import projet_echec.Deplacement;
+
 /**
  *
  * @author qgers
  */
 public class Roi extends Case{
     
+    public boolean deplacementPossible(Deplacement d) {
+        
+       boolean test = false;
+       /*
+            Le roi ne se déplace que d'une case parmi celles qui l'entoure.
+            Les soustractions vérifieront qu'il ne se déplace que d'une seule case de manière rectiligne.
+            La multiplication vérifiera qu'il ne se déplace que d'une seule case en diagonale.
+       */
+       
+       if(Math.abs(d.getDeplacementX()) * Math.abs(d.getDeplacementY()) <= 1 &&
+          Math.abs(d.getDeplacementX()) - Math.abs(d.getDeplacementY()) <= 1 &&
+          Math.abs(d.getDeplacementX()) - Math.abs(d.getDeplacementY()) >= -1) {
+           
+           test = true;
+       }
+       return test;
+    }
 }

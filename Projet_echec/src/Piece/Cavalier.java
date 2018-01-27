@@ -5,10 +5,24 @@
  */
 package Piece;
 
+import projet_echec.Deplacement;
+
 /**
  *
  * @author qgers
  */
 public class Cavalier extends Case{
     
+    public boolean deplacementPossible(Deplacement d) {
+        /* On vérifie si la division de nos déplacements est égal à 2 ou 0.5,
+        qui correspond au mouvement en L du Cavalier
+        */
+        boolean test = false;
+        if ((Math.abs(d.getDeplacementX() / d.getDeplacementY())) == 2 ||
+            (Math.abs(d.getDeplacementX() / d.getDeplacementY())) == .5) {
+            
+            test = true;
+        }
+        return test;
+    }
 }
