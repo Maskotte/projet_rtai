@@ -49,7 +49,7 @@ public class ChessModel {
         
         if(this.temp.getIcon() == null && this.temp1 == null)
         {
-            System.out.println("Il n'y a pas de pièce sur cette case");
+            System.out.println("Choissisez une pièce qui vous appartient :) ");
         }
         else  
         {
@@ -66,6 +66,7 @@ public class ChessModel {
                 this.temp1 = null;
                 this.setValueJoueur(-1, -1);
                 playersActu = this.getNextJoueur();
+                plateau.menuBarJoueur.setText("Joueur "+playersActu);
             }
         }
         
@@ -128,9 +129,10 @@ public class ChessModel {
     
     public void nouvellePartie()
     {
-        this.playersActu = 1;
-        this.plateau = new int[8][8];
-        System.out.println("Nouvelle partie");
+        
+        
+        ChessModel unModel = new ChessModel();
+        Board unBoard = new Board(unModel);
         
         
         

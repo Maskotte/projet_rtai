@@ -16,10 +16,11 @@ import javax.swing.JLabel;
  * @author qgers
  */
 public class CaseControler extends MouseAdapter {
+        int tempo = 0;
         int i;
         int j;
+        boolean valeur = false;
         private int[][] plateau;
-        boolean valeurTemp= false;
         JLabel temp = new JLabel();
         ImageIcon temp1 = new ImageIcon();
         
@@ -41,24 +42,23 @@ public class CaseControler extends MouseAdapter {
             this.temp = echequier.Plateau[i][j];
             this.temp1 = (ImageIcon) this.temp.getIcon();
             
-            boolean valeur = true;
-            if(chess.playersActu == 1)
+            if(this.temp.getIcon() == null && this.temp1 == null) 
             {
-                valeur = echequier.joueur1.verifList(this.temp1);
-                valeurTemp = true;
-                System.out.println("Joueur 1"+valeur);
-                
+                valeur = true;
             }
             else
             {
-                valeur  = echequier.joueur2.verifList(this.temp1); 
-                System.out.println("Joueur 2"+valeur);                
+                if(chess.playersActu == 1)
+                {
+                    valeur = echequier.joueur1.verifList(temp1);
+                }
+                else
+                {   
+                    valeur = echequier.joueur2.verifList(temp1);
+                }
             }
-            if( valeurTemp == true)
-            {
+            if(valeur == true)
                 chess.play(i, j, echequier);
-            }
-            
             
             
             

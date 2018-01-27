@@ -21,6 +21,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -34,11 +35,14 @@ public class Board extends JFrame {
     Joueur joueur1 ; 
     Joueur joueur2 ;
     JLabel Plateau[][];
+    //Menu
     JMenuBar menuBar ;
+    JMenu menuBarJoueur;
     JMenu menu;
     JMenuItem menu_1;
     JMenuItem menu_2;
-    
+    //Afficher joueur
+    JTextArea playJoueur;
     /*public ImageIcon chevalierB = new ImageIcon("icons\\blanches\\CB_B.png");
     public ImageIcon reineB = new ImageIcon("icons\\blanches\\DB_B.png");
     public ImageIcon roiB = new ImageIcon("icons\\blanches\\RB_B.png");
@@ -77,6 +81,7 @@ public class Board extends JFrame {
                 //Initialisation du menu
                 menuBar = new JMenuBar();
                 menu = new JMenu("Fichier");
+                menuBarJoueur = new JMenu("Joueur 1");
                 menu_1 = new JMenuItem("Nouvelle Partie");
                 menu_2 = new JMenuItem("Quitter");
                 
@@ -87,7 +92,7 @@ public class Board extends JFrame {
                 this.chess = title;
                 Plateau = new JLabel[8][8];
                 
-		
+		//
                 //Initialisation du plateau    
                 JLabel chessButton = null;
                 for(int i =0; i<8; i++)
@@ -156,6 +161,7 @@ public class Board extends JFrame {
                
                 //this.setMenuBar(mb);
                 menuBar.add(menu);
+                menuBar.add(menuBarJoueur);
                 menu_1.addActionListener( new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent ae) {
@@ -176,7 +182,6 @@ public class Board extends JFrame {
 		this.setSize(650, 650); // Size of the chess board
 		this.setVisible(true);
 	}
-        
         
         
         public void addJoueurList()

@@ -38,17 +38,18 @@ public class Joueur {
     public boolean verifList(ImageIcon image)
     {
         boolean temp = false;
-        for (ImageIcon imageIcon : listImage) 
-        {
-            if(image == imageIcon)
+        
+            for (ImageIcon imageIcon : listImage) 
             {
-                return true;
+                if(image == imageIcon)
+                {
+                    return true;
+                }
+                else
+                {
+                    temp = false;
+                }
             }
-            else
-            {
-                temp = false;
-            }
-        }
         return temp;
     }
     
