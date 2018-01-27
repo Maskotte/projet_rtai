@@ -35,10 +35,9 @@ public class Joueur {
         listImage.add(pieces);
     }
     
-    public boolean verifList(int couleur,ImageIcon image)
+    public boolean verifList(ImageIcon image)
     {
         boolean temp = false;
-        int valeur = this.getCouleur();
         for (ImageIcon imageIcon : listImage) 
         {
             if(image == imageIcon)

@@ -18,8 +18,8 @@ import javax.swing.JLabel;
 public class CaseControler extends MouseAdapter {
         int i;
         int j;
-        int k;
         private int[][] plateau;
+        boolean valeurTemp= false;
         JLabel temp = new JLabel();
         ImageIcon temp1 = new ImageIcon();
         
@@ -41,19 +41,23 @@ public class CaseControler extends MouseAdapter {
             this.temp = echequier.Plateau[i][j];
             this.temp1 = (ImageIcon) this.temp.getIcon();
             
-            boolean valeur = false;
+            boolean valeur = true;
             if(chess.playersActu == 1)
             {
-                valeur = echequier.joueur1.verifList(k,this.temp1);
-                System.out.println("Joueur 1 "+valeur);
-            }
-            if(chess.playersActu == 2)
-            {
-                valeur  = echequier.joueur2.verifList(k,this.temp1);
-                System.out.println("Joueur 2 "+valeur);
+                valeur = echequier.joueur1.verifList(this.temp1);
+                valeurTemp = true;
+                System.out.println("Joueur 1"+valeur);
                 
             }
-            chess.playersActu = this.chess.getNextJoueur();
+            else
+            {
+                valeur  = echequier.joueur2.verifList(this.temp1); 
+                System.out.println("Joueur 2"+valeur);                
+            }
+            if( valeurTemp == true)
+            {
+                chess.play(i, j, echequier);
+            }
             
             
             

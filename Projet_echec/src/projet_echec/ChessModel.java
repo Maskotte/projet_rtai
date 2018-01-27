@@ -41,7 +41,7 @@ public class ChessModel {
         positionY = j;
     }
     
-    /*public void play(int i, int j,int k, Board plateau) {
+    public void play(int i, int j, Board plateau) {
         this.nbCoups ++;
         
         //Récupère la case sélectionné
@@ -69,7 +69,7 @@ public class ChessModel {
             }
         }
         
-    }*/
+    }
     
     
     
