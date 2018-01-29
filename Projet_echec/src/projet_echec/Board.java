@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,8 +31,7 @@ import javax.swing.JTextArea;
 public class Board extends JFrame {
 
     private ChessModel chess;
-    public static final int squareCount = 64;
-    ArrayList<JButton> listButton = new ArrayList<>();
+    public Icon[] piece;
     Joueur joueur1 ; 
     Joueur joueur2 ;
     JLabel Plateau[][];
@@ -92,6 +92,14 @@ public class Board extends JFrame {
                 this.chess = title;
                 Plateau = new JLabel[8][8];
                 
+                piece = new Icon[6];
+                
+                piece[0] = tourB;
+                piece[1] = chevalierB;
+                piece[2] = fouB;
+                piece[3] = roiB;
+                piece[4] = reineB;
+                piece[5] = pionB;
 		//
                 //Initialisation du plateau    
                 JLabel chessButton = null;
