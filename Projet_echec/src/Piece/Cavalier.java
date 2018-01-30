@@ -11,8 +11,9 @@ import projet_echec.Deplacement;
  *
  * @author qgers
  */
-public class Cavalier extends Case{
+public class Cavalier extends Piece{
     
+    @Override
     public boolean deplacementPossible(Deplacement d) {
         /* On vérifie si la division de nos déplacements est égal à 2 ou 0.5,
         qui correspond au mouvement en L du Cavalier
@@ -24,5 +25,10 @@ public class Cavalier extends Case{
             test = true;
         }
         return test;
+    }
+
+    @Override
+    public void deplacer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

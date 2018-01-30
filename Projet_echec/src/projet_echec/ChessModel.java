@@ -5,6 +5,7 @@
  */
 package projet_echec;
 
+import Piece.Pion;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.Icon;
@@ -25,6 +26,7 @@ public class ChessModel {
     int positionX = -1;
     int positionY = -1;
     int nbCoups;
+    Pion unPion = new Pion();
 
     
     public ChessModel()
@@ -46,9 +48,9 @@ public class ChessModel {
         
         //Récupère la case sélectionné
         this.temp = plateau.Plateau[i][j];
-        this.temp1 = (ImageIcon) this.temp.getIcon();
+        //this.temp1 = (ImageIcon) this.temp.getIcon();
         
-        /*if(this.temp.getIcon() == null && this.temp1 == null)
+        if(this.temp.getIcon() == null && this.temp1 == null)
         {
             System.out.println("Choissisez une pièce qui vous appartient :) ");
         }
@@ -58,20 +60,65 @@ public class ChessModel {
             {
 
                 this.temp1 = (ImageIcon) this.temp.getIcon();
-                this.setValueJoueur(l, j);
+                this.setValueJoueur(i, j);
             }
             else
             {
+                for(int l = 0 ; l< plateau.piece.length; l++)
+                {
+                    if(plateau.piece[l] == temp1)
+                    {
+                        switch(l)
+                        {
+                            case 0 : 
+                                unPion.deplacer();
+                                break;
+                            case 1 : 
+                                System.out.println("chevalier blanche");
+                                break;
+                            case 2 : 
+                                System.out.println("fou blanche");
+                                break;  
+                            case 3 : 
+                                System.out.println("reine blanche");
+                                break;
+                            case 4 : 
+                                System.out.println("roi blanche");
+                                break;
+                            case 5 : 
+                                System.out.println("pion blanche");
+                                break;
+                            case 6 : 
+                                System.out.println("Tour noire");
+                                break;
+                            case 7 : 
+                                System.out.println("chevalier noire");
+                                break;
+                            case 8 : 
+                                System.out.println("fou noire");
+                                break;  
+                            case 9 : 
+                                System.out.println("reine noire");
+                                break;
+                            case 10 : 
+                                System.out.println("roi noire");
+                                break;
+                            case 11 : 
+                                System.out.println("pion noire");
+                                break;    
+                        }
+                    }
+                }
                 plateau.Plateau[positionX][positionY].setIcon(null);
-                plateau.Plateau[l][j].setIcon(temp1);
+                plateau.Plateau[i][j].setIcon(temp1);
                 this.temp1 = null;
                 this.setValueJoueur(-1, -1);
                 playersActu = this.getNextJoueur();
                 plateau.menuBarJoueur.setText("Joueur "+playersActu);
             }
-        }*/
+        }
         
-        for(int l = 0 ; l< 6; l++)
+        /*for(int l = 0 ; l< 6; l++)
         {
             if(plateau.piece[l] == temp1)
             {
@@ -97,7 +144,7 @@ public class ChessModel {
                         break;
                 }
             }
-        }
+        }*/
         
     }
     

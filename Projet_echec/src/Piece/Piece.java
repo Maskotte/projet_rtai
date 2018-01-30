@@ -6,18 +6,16 @@
 package Piece;
 
 import projet_echec.ChessModel;
+import projet_echec.Deplacement;
 
 /**
  *
  * @author quent
  */
-public class Case{
+public abstract class Piece{
     
     
-    
-    
-    public void deplacer(){
-           
-    }
+    public abstract boolean deplacementPossible(Deplacement d);
+    public abstract void deplacer();
     
 }

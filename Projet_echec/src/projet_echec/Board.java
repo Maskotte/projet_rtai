@@ -92,7 +92,7 @@ public class Board extends JFrame {
                 this.chess = title;
                 Plateau = new JLabel[8][8];
                 
-                piece = new Icon[6];
+                piece = new Icon[12];
                 
                 piece[0] = tourB;
                 piece[1] = chevalierB;
@@ -100,9 +100,17 @@ public class Board extends JFrame {
                 piece[3] = roiB;
                 piece[4] = reineB;
                 piece[5] = pionB;
-		//
+                
+                piece[6] = tourN;
+                piece[7] = chevalierN;
+                piece[8] = fouN;
+                piece[9] = roiN;
+                piece[10] = reineN;
+                piece[11] = pionN;
+		
                 //Initialisation du plateau    
                 JLabel chessButton = null;
+                
                 for(int i =0; i<8; i++)
                 {
                     for(int j=0; j<8; j++)

@@ -11,8 +11,9 @@ import projet_echec.Deplacement;
  *
  * @author qgers
  */
-public class Tour extends Case{
+public class Tour extends Piece{
     
+    @Override
     public boolean deplacementPossible(Deplacement d) {
         /*
             Le déplacement de la tour étant soit vertical ou horizontal, cela signifie
@@ -26,5 +27,10 @@ public class Tour extends Case{
             test = true;
         }
         return test;
+    }
+
+    @Override
+    public void deplacer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

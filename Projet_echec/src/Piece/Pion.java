@@ -5,16 +5,33 @@
  */
 package Piece;
 
+import projet_echec.Deplacement;
+
 /**
  *
  * @author qgers
  */
-public class Pion extends Case{
+public class Pion extends Piece{
     private int[][] position;
     
+    public Pion()
+    {
+        
+    }
     
     public int getposition(int i, int j)
     {
         return position[i][j];
+    }
+
+    @Override
+    public boolean deplacementPossible(Deplacement d) {
+        System.out.println("return");
+        return true; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deplacer() {
+        System.out.println("return");
     }
 }

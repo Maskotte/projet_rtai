@@ -11,7 +11,7 @@ import projet_echec.Deplacement;
  *
  * @author qgers
  */
-public class Fou extends Case{
+public class Fou extends Piece{
    
     public boolean deplacementPossible(Deplacement d) {
         /*
@@ -25,5 +25,10 @@ public class Fou extends Case{
             test = true;
         }
         return test;
+    }
+
+    @Override
+    public void deplacer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
