@@ -19,14 +19,22 @@ import javax.swing.JLabel;
  */
 public class ChessModel {
     ArrayList<Observateur> joueur;
-    private int[][] plateau;
-    int playersActu = 1;
     JLabel temp = new JLabel();
     ImageIcon temp1 = new ImageIcon();
+    
+    int[][] plateau;
+    int playersActu = 1;
     int positionX = -1;
     int positionY = -1;
     int nbCoups;
+    boolean valeur = false;
+    
     Pion unPion = new Pion();
+    
+    Coordonnee mapD;
+    Coordonnee mapA;
+    
+    Deplacement dep;
 
     
     public ChessModel()
@@ -34,8 +42,8 @@ public class ChessModel {
         this.joueur = new ArrayList<Observateur>();
         
     }
-    public int getCase(int i, int j) {
-        return plateau[i][j];
+    public int[][] getCase() {
+        return plateau;
     }
     public void setValueJoueur(int i, int j)
     {
@@ -44,11 +52,10 @@ public class ChessModel {
     }
     
     public void play(int i, int j, Board plateau) {
-        this.nbCoups ++;
         
         //Récupère la case sélectionné
         this.temp = plateau.Plateau[i][j];
-        //this.temp1 = (ImageIcon) this.temp.getIcon();
+        
         
         if(this.temp.getIcon() == null && this.temp1 == null)
         {
@@ -61,9 +68,12 @@ public class ChessModel {
 
                 this.temp1 = (ImageIcon) this.temp.getIcon();
                 this.setValueJoueur(i, j);
+                mapD = new Coordonnee(i,j);
             }
             else
             {
+                mapA = new Coordonnee(i,j);
+                dep = new Deplacement(mapD,mapA);
                 for(int l = 0 ; l< plateau.piece.length; l++)
                 {
                     if(plateau.piece[l] == temp1)
@@ -71,50 +81,62 @@ public class ChessModel {
                         switch(l)
                         {
                             case 0 : 
-                                unPion.deplacer();
+                                
                                 break;
                             case 1 : 
-                                System.out.println("chevalier blanche");
+                                
                                 break;
                             case 2 : 
-                                System.out.println("fou blanche");
+                                
                                 break;  
                             case 3 : 
-                                System.out.println("reine blanche");
+                                
                                 break;
                             case 4 : 
-                                System.out.println("roi blanche");
+                                
                                 break;
                             case 5 : 
-                                System.out.println("pion blanche");
+                                if(playersActu == 1)
+                                    unPion.setCouleur("blanc");
+                                else
+                                    unPion.setCouleur("noir");
+                                unPion.setPosition(i, j);
+                                valeur = unPion.deplacementPossible(dep);
                                 break;
                             case 6 : 
-                                System.out.println("Tour noire");
+                                
                                 break;
                             case 7 : 
-                                System.out.println("chevalier noire");
+                               
                                 break;
                             case 8 : 
-                                System.out.println("fou noire");
+                                
                                 break;  
                             case 9 : 
-                                System.out.println("reine noire");
+                                
                                 break;
                             case 10 : 
-                                System.out.println("roi noire");
+                              
                                 break;
                             case 11 : 
-                                System.out.println("pion noire");
+                                
                                 break;    
                         }
+                        this.nbCoups ++;
                     }
                 }
-                plateau.Plateau[positionX][positionY].setIcon(null);
-                plateau.Plateau[i][j].setIcon(temp1);
-                this.temp1 = null;
-                this.setValueJoueur(-1, -1);
-                playersActu = this.getNextJoueur();
-                plateau.menuBarJoueur.setText("Joueur "+playersActu);
+                if(valeur == true)
+                {
+                    plateau.Plateau[positionX][positionY].setIcon(null);
+                    plateau.Plateau[i][j].setIcon(temp1);
+                    this.temp1 = null;
+                    this.setValueJoueur(-1, -1);
+                    playersActu = this.getNextJoueur();
+                    plateau.menuBarJoueur.setText("Joueur "+playersActu);
+                }
+                else
+                    System.out.println("Deplacement impossible");
+                
             }
         }
         

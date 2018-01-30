@@ -6,6 +6,7 @@
 package Piece;
 
 import projet_echec.ChessModel;
+import projet_echec.Coordonnee;
 import projet_echec.Deplacement;
 
 /**
@@ -16,6 +17,6 @@ public abstract class Piece{
     
     
     public abstract boolean deplacementPossible(Deplacement d);
-    public abstract void deplacer();
+    //public abstract void deplacer(Coordonnee depart, Coordonnee arrivee);
     
 }

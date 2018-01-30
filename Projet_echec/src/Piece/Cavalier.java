@@ -5,6 +5,7 @@
  */
 package Piece;
 
+import projet_echec.Coordonnee;
 import projet_echec.Deplacement;
 
 /**
@@ -27,8 +28,10 @@ public class Cavalier extends Piece{
         return test;
     }
 
-    @Override
-    public void deplacer() {
+    /*@Override
+    public void deplacer(Coordonnee depart, Coordonnee arrivee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
+
+    
 }
