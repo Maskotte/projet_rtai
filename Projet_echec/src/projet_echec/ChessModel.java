@@ -74,8 +74,13 @@ public class ChessModel {
             }
             else
             {
+                //renseigne les coordonnee d'arrivee
                 mapA = new Coordonnee(i,j);
+                
+                //Renseigne le déplacement
                 dep = new Deplacement(mapD,mapA);
+                
+                
                 for(int l = 0 ; l< plateau.piece.length; l++)
                 {
                     if(plateau.piece[l] == temp1)
@@ -126,6 +131,12 @@ public class ChessModel {
                               
                                 break;
                             case 11 : 
+                                if(playersActu == 1)
+                                    unPion.setCouleur("blanc");
+                                else
+                                    unPion.setCouleur("noir");
+                                unPion.setPosition(i, j);
+                                valeur = unPion.deplacementPossible(dep);
                                 
                                 break;    
                         }

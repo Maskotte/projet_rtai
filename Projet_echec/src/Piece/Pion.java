@@ -31,6 +31,7 @@ public class Pion extends Piece{
     private int[][] position;
     private int i ;
     private int j;
+    int val;
     private String couleur ;
 
     
@@ -68,13 +69,29 @@ public class Pion extends Piece{
         if (d.getDeplacementX() != 0)
         {	
             if (this.getCouleur().equals("noir")){
-                //System.out.println("Deplacement N en "+d.getArrivee().getLigne()+":"+d.getArrivee().getColonne());
-                return  d.getDeplacementY() <= (d.getDepart().getLigne() == 1 ? 2 : 1) && d.getDeplacementY() > 0;
+                
+                if(d.getArrivee().getLigne() == d.getDepart().getLigne())
+                {
+                    if(d.getDeplacementX() <= 2)
+                    {
+                        return true;
+                    }
+                    
+                }
             }
             else 
             {
                 //System.out.println("Deplacement B en "+i+":"+j);
-                return  d.getDeplacementY() >= (d.getDepart().getLigne() == 6 ? -1: -2) && d.getDeplacementY() < 0;
+                //return  d.getDeplacementY() >= (d.getDepart().getLigne() == 6 ? -2: -1) && d.getDeplacementY() < 0;
+                
+                if(d.getArrivee().getLigne() == d.getDepart().getLigne())
+                {
+                    if(d.getDeplacementX() >= -2)
+                    {
+                        return true;
+                    }
+                    
+                }
             }
             /*
             System.out.println(""+d.getDepart().getLigne());
