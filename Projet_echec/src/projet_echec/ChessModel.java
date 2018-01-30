@@ -5,6 +5,7 @@
  */
 package projet_echec;
 
+import Piece.Cavalier;
 import Piece.Pion;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class ChessModel {
     boolean valeur = false;
     
     Pion unPion = new Pion();
+    Cavalier unChevalier = new Cavalier();
     
     Coordonnee mapD;
     Coordonnee mapA;
@@ -84,7 +86,12 @@ public class ChessModel {
                                 
                                 break;
                             case 1 : 
-                                
+                                if(playersActu == 1)
+                                    unChevalier.setCouleur("blanc");
+                                else
+                                    unChevalier.setCouleur("noir");
+                                //unChevalier.setPosition(i, j);
+                                valeur = unChevalier.deplacementPossible(dep);
                                 break;
                             case 2 : 
                                 

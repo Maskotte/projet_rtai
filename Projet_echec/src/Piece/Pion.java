@@ -73,8 +73,8 @@ public class Pion extends Piece{
             }
             else 
             {
+                //System.out.println("Deplacement B en "+i+":"+j);
                 return  d.getDeplacementY() >= (d.getDepart().getLigne() == 6 ? -1: -2) && d.getDeplacementY() < 0;
-                
             }
             /*
             System.out.println(""+d.getDepart().getLigne());

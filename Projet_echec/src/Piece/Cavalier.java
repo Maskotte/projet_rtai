@@ -13,7 +13,22 @@ import projet_echec.Deplacement;
  * @author qgers
  */
 public class Cavalier extends Piece{
+
+    /**
+     * @return the couleur
+     */
+    public String getCouleur() {
+        return couleur;
+    }
+
+    /**
+     * @param couleur the couleur to set
+     */
+    public void setCouleur(String couleur) {
+        this.couleur = couleur;
+    }
     
+    private String couleur;
     @Override
     public boolean deplacementPossible(Deplacement d) {
         /* On vérifie si la division de nos déplacements est égal à 2 ou 0.5,
