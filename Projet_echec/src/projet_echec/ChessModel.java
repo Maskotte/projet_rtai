@@ -6,7 +6,11 @@
 package projet_echec;
 
 import Piece.Cavalier;
+import Piece.Fou;
 import Piece.Pion;
+import Piece.Reine;
+import Piece.Roi;
+import Piece.Tour;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.Icon;
@@ -31,7 +35,11 @@ public class ChessModel {
     boolean valeur = false;
     
     Pion unPion = new Pion();
-    Cavalier unChevalier = new Cavalier();
+    Cavalier unCavalier = new Cavalier();
+    Tour uneTour = new Tour();
+    Reine uneReine = new Reine();
+    Roi unRoi = new Roi();
+    Fou unFou = new Fou();
     
     Coordonnee mapD;
     Coordonnee mapA;
@@ -88,18 +96,18 @@ public class ChessModel {
                         switch(l)
                         {
                             case 0 : 
-                                
+                                valeur = uneTour.deplacementPossible(dep);
                                 break;
                             case 1 : 
                                 if(playersActu == 1)
-                                    unChevalier.setCouleur("blanc");
+                                    unCavalier.setCouleur("blanc");
                                 else
-                                    unChevalier.setCouleur("noir");
+                                    unCavalier.setCouleur("noir");
                                 //unChevalier.setPosition(i, j);
-                                valeur = unChevalier.deplacementPossible(dep);
+                                valeur = unCavalier.deplacementPossible(dep);
                                 break;
                             case 2 : 
-                                
+                                valeur = unFou.deplacementPossible(dep);
                                 break;  
                             case 3 : 
                                 
@@ -116,13 +124,15 @@ public class ChessModel {
                                 valeur = unPion.deplacementPossible(dep);
                                 break;
                             case 6 : 
-                                
+                                valeur = uneTour.deplacementPossible(dep);
                                 break;
                             case 7 : 
-                               
+                               unCavalier.setCouleur("noir");
+                                //unChevalier.setPosition(i, j);
+                                valeur = unCavalier.deplacementPossible(dep);
                                 break;
                             case 8 : 
-                                
+                                valeur = unFou.deplacementPossible(dep);
                                 break;  
                             case 9 : 
                                 
