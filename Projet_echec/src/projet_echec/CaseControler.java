@@ -17,7 +17,7 @@ import javax.swing.JLabel;
  * @author qgers
  */
 public class CaseControler extends MouseAdapter {
-        int tempo = 0;
+        
         int i;
         int j;
         boolean valeur = false;
@@ -40,34 +40,26 @@ public class CaseControler extends MouseAdapter {
         public void mouseClicked(MouseEvent e)
         {   
             
-            this.temp = echequier.Plateau[i][j];
-            this.temp1 = (ImageIcon) this.temp.getIcon();
+            this.temp = echequier.Plateau[i][j]; //récupère le label pour faire nos actions 
+            this.temp1 = (ImageIcon) this.temp.getIcon();//récupère l'image sur le label
             
-         
-            
- 
-            if(this.temp.getIcon() == null && this.temp1 == null) 
-            {
-
-                valeur = true;
-            }
+            if(this.temp.getIcon() == null || this.temp1 == null) //si il n'y a pas d'image sur le label ou 
+             valeur = true;                                         //si l'image en tempon est null alors
             else
             {
-                if(chess.playersActu == 1)
+                if(chess.playersActu == 1) //Si le joueur 1 joue
                 {
-                    valeur = echequier.joueur1.verifList(temp1);
+                    valeur = echequier.joueur1.verifList(temp1); // on vérifie que l'icon qui la sélectionné est bien dans sa liste
                 }
-                else
+                else // sinon il vérifira la liste du joueur 2 
                 {   
                      valeur = echequier.joueur2.verifList(temp1);
                 }
             }
             
-            if(valeur == true)
-                chess.play(i, j, echequier);
+            if(valeur == true) //Si l'image est dans la liste du joueur  alors
+                chess.play(i, j, echequier); // on joue :) 
             
             
-            
-            //chess.play(i, j,k,echequier);
         }
 }

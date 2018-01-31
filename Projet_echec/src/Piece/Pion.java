@@ -59,12 +59,12 @@ public class Pion extends Piece{
         
         
         
-        System.out.println(""+d.getDepart().getLigne());
+        /*System.out.println(""+d.getDepart().getLigne());
         System.out.println(""+d.getDepart().getColonne());
         System.out.println(""+d.getArrivee().getLigne());
         System.out.println(""+d.getArrivee().getColonne());
         System.out.println(""+d.getDeplacementX());
-        System.out.println(""+d.getDeplacementY());
+        System.out.println(""+d.getDeplacementY());*/
         
         if (d.getDeplacementX() != 0)
         {	
@@ -81,8 +81,6 @@ public class Pion extends Piece{
             }
             else 
             {
-                //System.out.println("Deplacement B en "+i+":"+j);
-                //return  d.getDeplacementY() >= (d.getDepart().getLigne() == 6 ? -2: -1) && d.getDeplacementY() < 0;
                 
                 if(d.getArrivee().getLigne() == d.getDepart().getLigne() && d.getDeplacementX() < 0)
                 {
@@ -93,13 +91,6 @@ public class Pion extends Piece{
                     
                 }
             }
-            /*
-            System.out.println(""+d.getDepart().getLigne());
-            System.out.println(""+d.getDepart().getColonne());
-            System.out.println(""+d.getArrivee().getLigne());
-            System.out.println(""+d.getArrivee().getColonne());
-            System.out.println(""+d.getDeplacementX());
-            System.out.println(""+d.getDeplacementY());*/
 				
 	}
         return false;

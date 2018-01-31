@@ -97,15 +97,15 @@ public class Board extends JFrame {
                 piece[0] = tourB;
                 piece[1] = chevalierB;
                 piece[2] = fouB;
-                piece[3] = roiB;
-                piece[4] = reineB;
+                piece[3] = reineB;
+                piece[4] = roiB;
                 piece[5] = pionB;
                 
                 piece[6] = tourN;
                 piece[7] = chevalierN;
                 piece[8] = fouN;
-                piece[9] = roiN;
-                piece[10] = reineN;
+                piece[9] = reineN;
+                piece[10] = roiN;
                 piece[11] = pionN;
 		
                 //Initialisation du plateau    

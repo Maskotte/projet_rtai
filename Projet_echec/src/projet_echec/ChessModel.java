@@ -66,39 +66,38 @@ public class ChessModel {
         //Récupère la case sélectionné
         this.temp = plateau.Plateau[i][j];
         
-        
-        if(this.temp.getIcon() == null && this.temp1 == null)
-        {
+        if(this.temp.getIcon() == null && this.temp1 == null) //si il n'y a pas d'image sur le label ou
+        {                                                   //si k'image en tempon est null alors
             System.out.println("Choissisez une pièce qui vous appartient :) ");
         }
-        else  
+        else  //sinon
         {
-            if(positionX == -1 && positionY == -1 )
+            if(positionX == -1 && positionY == -1 ) //Si les valeurs X et Y sont de -1 alors 
             {
 
-                this.temp1 = (ImageIcon) this.temp.getIcon();
-                this.setValueJoueur(i, j);
-                mapD = new Coordonnee(i,j);
+                this.temp1 = (ImageIcon) this.temp.getIcon(); //On récupère k'image ?  
+                this.setValueJoueur(i, j); //On mets les valeurs de i et j dans les valeurs X et Y 
+                mapD = new Coordonnee(i,j); //On enregistre les coordonnée grâce à i et j 
             }
-            else
+            else //sinon 
             {
                 //renseigne les coordonnee d'arrivee
                 mapA = new Coordonnee(i,j);
                 
-                //Renseigne le déplacement
+                //Renseigne le déplacement voulu avec les coordonnee de départ et d'arrivé
                 dep = new Deplacement(mapD,mapA);
                 
                 
-                for(int l = 0 ; l< plateau.piece.length; l++)
+                for(int k = 0 ; k< plateau.piece.length; k++) // On parcours le tableau de pièces
                 {
-                    if(plateau.piece[l] == temp1)
+                    if(plateau.piece[k] == temp1) //Si une pièce correspond à l'image récupéré en tampon alors 
                     {
-                        switch(l)
+                        switch(k) //en fonction de la valeur de k 
                         {
-                            case 0 : 
+                            case 0 : // Tour 
                                 valeur = uneTour.deplacementPossible(dep);
                                 break;
-                            case 1 : 
+                            case 1 : //Cavalier
                                 if(playersActu == 1)
                                     unCavalier.setCouleur("blanc");
                                 else
@@ -106,16 +105,16 @@ public class ChessModel {
                                 //unChevalier.setPosition(i, j);
                                 valeur = unCavalier.deplacementPossible(dep);
                                 break;
-                            case 2 : 
+                            case 2 : //Fou
                                 valeur = unFou.deplacementPossible(dep);
                                 break;  
-                            case 3 : 
-                                
+                            case 3 : //Roi
+                                valeur = unRoi.deplacementPossible(dep);
                                 break;
-                            case 4 : 
-                                
+                            case 4 : //Reine
+                                valeur = uneReine.deplacementPossible(dep);
                                 break;
-                            case 5 : 
+                            case 5 : //Pion et on continue pour les pièces noirs
                                 if(playersActu == 1)
                                     unPion.setCouleur("blanc");
                                 else
@@ -135,10 +134,10 @@ public class ChessModel {
                                 valeur = unFou.deplacementPossible(dep);
                                 break;  
                             case 9 : 
-                                
+                                valeur = unRoi.deplacementPossible(dep);
                                 break;
                             case 10 : 
-                              
+                              valeur = uneReine.deplacementPossible(dep);
                                 break;
                             case 11 : 
                                 if(playersActu == 1)
@@ -150,52 +149,26 @@ public class ChessModel {
                                 
                                 break;    
                         }
-                        this.nbCoups ++;
+                        
                     }
                 }
-                if(valeur == true)
+                if(valeur == true) // Si le déplacement est possible
                 {
-                    plateau.Plateau[positionX][positionY].setIcon(null);
-                    plateau.Plateau[i][j].setIcon(temp1);
-                    this.temp1 = null;
-                    this.setValueJoueur(-1, -1);
-                    playersActu = this.getNextJoueur();
-                    plateau.menuBarJoueur.setText("Joueur "+playersActu);
+                    
+                    plateau.Plateau[positionX][positionY].setIcon(null); //supprime l'image du tableau après que le joueur ai joué
+                    
+                    plateau.Plateau[i][j].setIcon(temp1); // On place l'image sur la label qui ne contient pas d'image
+                    this.temp1 = null; // supprime l'image stocké en mémoire
+                    this.setValueJoueur(-1, -1); // On remet par défaut les valeurs de X et Y en tampon
+                    playersActu = this.getNextJoueur(); // On change de joueur 
+                    plateau.menuBarJoueur.setText("Joueur "+playersActu); // On renseigne dans la frame dans le menu le joueur qui joue
+                    this.nbCoups ++; // On augmente le nombre de coups
                 }
                 else
                     System.out.println("Deplacement impossible");
                 
             }
         }
-        
-        /*for(int l = 0 ; l< 6; l++)
-        {
-            if(plateau.piece[l] == temp1)
-            {
-                switch(l)
-                {
-                    case 0 : 
-                        System.out.println("Tour");
-                        break;
-                    case 1 : 
-                        System.out.println("chevalier");
-                        break;
-                    case 2 : 
-                        System.out.println("fou");
-                        break;  
-                    case 3 : 
-                        System.out.println("roi");
-                        break;
-                    case 4 : 
-                        System.out.println("reine");
-                        break;
-                    case 5 : 
-                        System.out.println("pion");
-                        break;
-                }
-            }
-        }*/
-        
     }
     
     
@@ -211,12 +184,12 @@ public class ChessModel {
         }
     }
     
-     // Ajouter l'observateur
+     // Ajouter k'observateur
     public void register(Observateur o) {
         this.joueur.add(o);
     }
     
-    // Retirer l'observateur
+    // Retirer k'observateur
     public void unRegister(Observateur o) {
         this.joueur.remove(o);
     }
