@@ -49,11 +49,20 @@ public class CaseControler extends MouseAdapter {
             {
                 if(chess.playersActu == 1) //Si le joueur 1 joue
                 {
-                    valeur = echequier.joueur1.verifList(temp1); // on vérifie que l'icon qui la sélectionné est bien dans sa liste
+                    if(temp.getIcon() != null) 
+                    {
+                        chess.play(i, j, echequier); // on joue :) 
+                    }
+                    else
+                        valeur = echequier.joueur1.verifList(temp1); // on vérifie que l'icon qui la sélectionné est bien dans sa liste
                 }
                 else // sinon il vérifira la liste du joueur 2 
                 {   
-                     valeur = echequier.joueur2.verifList(temp1);
+                    if(temp.getIcon() != null) 
+                    {
+                        chess.play(i, j, echequier); // on joue :) 
+                    }
+                    valeur = echequier.joueur2.verifList(temp1);
                 }
             }
             

@@ -164,8 +164,7 @@ public class ChessModel {
                     plateau.menuBarJoueur.setText("Joueur "+playersActu); // On renseigne dans la frame dans le menu le joueur qui joue
                     this.nbCoups ++; // On augmente le nombre de coups
                 }
-                else
-                    System.out.println("Deplacement impossible");
+                
                 
             }
         }
