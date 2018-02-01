@@ -24,18 +24,17 @@ public class Tour extends Piece{
         
         boolean test = false;
         
-        if(d.getDeplacementY() == 0 ) {
-            System.out.println("vrai");
+        if(d.getDeplacementY() == 0 || d.getDeplacementX() == 0) {
             return true;
             
         }
            
-            System.out.println(""+d.getDepart().getLigne());
+            /**System.out.println(""+d.getDepart().getLigne());
             System.out.println(""+d.getDepart().getColonne());
             System.out.println(""+d.getArrivee().getLigne());
             System.out.println(""+d.getArrivee().getColonne());
             System.out.println(""+d.getDeplacementX());
-            System.out.println(""+d.getDeplacementY());
+            System.out.println(""+d.getDeplacementY());*/
         return false;
     }
 

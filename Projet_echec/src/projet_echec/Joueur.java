@@ -35,7 +35,7 @@ public class Joueur {
         listImage.add(pieces);
     }
     
-    public boolean verifList(ImageIcon image)
+    public boolean verifList(ImageIcon image) //Cette méthode va nous permettre de différencié les pièces des joueurs
     {
         boolean temp = false;
         

@@ -98,11 +98,6 @@ public class ChessModel {
                                 valeur = uneTour.deplacementPossible(dep);
                                 break;
                             case 1 : //Cavalier
-                                if(playersActu == 1)
-                                    unCavalier.setCouleur("blanc");
-                                else
-                                    unCavalier.setCouleur("noir");
-                                //unChevalier.setPosition(i, j);
                                 valeur = unCavalier.deplacementPossible(dep);
                                 break;
                             case 2 : //Fou
@@ -126,8 +121,7 @@ public class ChessModel {
                                 valeur = uneTour.deplacementPossible(dep);
                                 break;
                             case 7 : 
-                               unCavalier.setCouleur("noir");
-                                //unChevalier.setPosition(i, j);
+                               
                                 valeur = unCavalier.deplacementPossible(dep);
                                 break;
                             case 8 : 

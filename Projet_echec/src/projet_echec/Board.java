@@ -43,18 +43,6 @@ public class Board extends JFrame {
     JMenuItem menu_2;
     //Afficher joueur
     JTextArea playJoueur;
-    /*public ImageIcon chevalierB = new ImageIcon("icons\\blanches\\CB_B.png");
-    public ImageIcon reineB = new ImageIcon("icons\\blanches\\DB_B.png");
-    public ImageIcon roiB = new ImageIcon("icons\\blanches\\RB_B.png");
-    public ImageIcon fouB = new ImageIcon("icons\\blanches\\FB_B.png");
-    public ImageIcon tourB = new ImageIcon("icons\\blanches\\TB_B.png");
-    public ImageIcon pionB = new ImageIcon("icons\\blanches\\PB_B.png");
-    public ImageIcon chevalierN = new ImageIcon("icons\\noires\\CN_N.png");
-    public ImageIcon reineN = new ImageIcon("icons\\noires\\DN_N.png");
-    public ImageIcon roiN = new ImageIcon("icons\\noires\\RN_N.png");
-    public ImageIcon fouN = new ImageIcon("icons\\noires\\FN_N.png");
-    public ImageIcon tourN = new ImageIcon("icons\\noires\\TN_N.png");
-    public ImageIcon pionN = new ImageIcon("icons\\noires\\PN_N.png");*/
     
     public ImageIcon chevalierB = new ImageIcon("icons\\blanches transparentes\\cavalierB.png");
     public ImageIcon reineB = new ImageIcon("icons\\blanches transparentes\\reineB.png");
@@ -192,6 +180,7 @@ public class Board extends JFrame {
                 });
                 menu.add(menu_1);
                 menu.add(menu_2);
+                
                 this.setJMenuBar(menuBar);
 		this.setTitle("Jeu échec"); // Setting the title of board
 		this.setLayout(new GridLayout(8, 8)); // GridLayout will arrange elements in Grid Manager 8 X 8
