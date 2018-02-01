@@ -39,16 +39,17 @@ public class CaseControler extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e)
         {   
-            
-            this.temp = echequier.Plateau[i][j]; //récupère le label pour faire nos actions 
-            this.temp1 = (ImageIcon) this.temp.getIcon();//récupère l'image sur le label
-            
-            if(this.temp.getIcon() == null ) //si il n'y a pas d'image sur le label ou 
-                valeur = true;                                         //si l'image en tempon est null alors
+            temp = echequier.Plateau[i][j];
+            if(temp.getIcon() == null )
+            {
+                valeur = true;
+            }
             else
             {
-                if(chess.playersActu == 1) //Si le joueur 1 joue
+                temp1 = (ImageIcon) this.temp.getIcon();
+                if(chess.playersActu == 1 ) //Si le joueur 1 joue
                 {
+                    
                     valeur = echequier.joueur1.verifList(temp1); // on vérifie que l'icon qui la sélectionné est bien dans sa liste
                 }
                 else // sinon il vérifira la liste du joueur 2 
@@ -57,7 +58,6 @@ public class CaseControler extends MouseAdapter {
                     valeur = echequier.joueur2.verifList(temp1);
                 }
             }
-            
             if(valeur == true) //Si l'image est dans la liste du joueur  alors
                 chess.play(i, j, echequier); // on joue :) 
             else
