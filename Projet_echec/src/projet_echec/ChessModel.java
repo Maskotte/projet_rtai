@@ -51,6 +51,8 @@ public class ChessModel {
     {
         this.joueur = new ArrayList<Observateur>();
         
+        nouvellePartie();
+        
     }
     public int[][] getCase() {
         return plateau;
@@ -66,15 +68,14 @@ public class ChessModel {
         //Récupère la case sélectionné
         this.temp = plateau.Plateau[i][j];
         
-        if(this.temp.getIcon() == null && this.temp1 == null) //si il n'y a pas d'image sur le label ou
-        {                                                   //si k'image en tempon est null alors
-            System.out.println("Choissisez une pièce qui vous appartient :) ");
+        if(this.temp.getIcon() == null && this.temp1 == null) //si il n'y a pas d'image sur le label ou                                                   
+        {
+            System.out.println("Erreur");
         }
-        else  //sinon
+        else
         {
             if(positionX == -1 && positionY == -1 ) //Si les valeurs X et Y sont de -1 alors 
             {
-
                 this.temp1 = (ImageIcon) this.temp.getIcon(); //On récupère k'image ?  
                 this.setValueJoueur(i, j); //On mets les valeurs de i et j dans les valeurs X et Y 
                 mapD = new Coordonnee(i,j); //On enregistre les coordonnée grâce à i et j 
@@ -88,8 +89,8 @@ public class ChessModel {
                 dep = new Deplacement(mapD,mapA);
                 
                 
-                for(int k = 0 ; k< plateau.piece.length; k++) // On parcours le tableau de pièces
-                {
+                for(int k = 0 ; k< plateau.piece.length; k++){ // On parcours le tableau de pièces
+                
                     if(plateau.piece[k] == temp1) //Si une pièce correspond à l'image récupéré en tampon alors 
                     {
                         switch(k) //en fonction de la valeur de k 
@@ -157,6 +158,9 @@ public class ChessModel {
                     playersActu = this.getNextJoueur(); // On change de joueur 
                     plateau.menuBarJoueur.setText("Joueur "+playersActu); // On renseigne dans la frame dans le menu le joueur qui joue
                     this.nbCoups ++; // On augmente le nombre de coups
+                    
+                    
+                    //avertirAllObservateurs(i, j, plateau);
                 }
                 
                 
@@ -164,16 +168,30 @@ public class ChessModel {
         }
     }
     
+    public String toString()
+    {
+        String retour ="";
+        for(int i = 0; i < 8; i++) {
+            retour += Integer.toString(i);
+            for(int j = 0; j < 8; i++) {
+                retour += " "+Integer.toString(j);
+            }
+            retour += "\r\n";
+        }
+        return retour;
+    }
+    
     
     
     
      public int getNextJoueur() {
-        if(this.playersActu == 1) {
-            return 2;
-        } else if(this.playersActu == 2) {
-            return 1;
-        } else {
-            return 0;
+        switch (this.playersActu) {
+            case 1:
+                return 2;
+            case 2:
+                return 1;
+            default:
+                return 0;
         }
     }
     
@@ -188,9 +206,9 @@ public class ChessModel {
     }
     
     // Avertir TOUS les observateurs d'un coup
-    public void avertirAllObservateurs(int i, int j) {
+    public void avertirAllObservateurs(int i, int j,Board plateau) {
         for(Observateur o : this.joueur) {
-            o.avertir(i, j);
+            o.avertir(i, j, plateau);
         }
     }
     
@@ -221,15 +239,18 @@ public class ChessModel {
     
     public void nouvellePartie()
     {
-        
-        
-        ChessModel unModel = new ChessModel();
-        Board unBoard = new Board(unModel);
-        
-        
-        
-        nbCoups = 0; // On reset le nombre de coups
-         
+       this.playersActu = 1;
+       this.plateau = new int[8][8];
+       
+       for(int i=0;i<8;i++)
+       {
+           for(int j =0;j<8;j++){
+               plateau[i][j] = 0;
+           }
+       }
+       
+       
+       nbCoups = 0;    
     }
  
     

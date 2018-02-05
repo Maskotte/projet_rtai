@@ -28,10 +28,12 @@ import javax.swing.JTextArea;
  *
  * @author tok
  */
-public class Board extends JFrame {
+public class Board extends JFrame{
 
     private ChessModel chess;
     public Icon[] piece;
+    Color blackColor = new Color(209, 139, 71);
+    Color whiteColor = new Color(255, 206, 158);
     Joueur joueur1 ; 
     Joueur joueur2 ;
     JLabel Plateau[][];
@@ -63,8 +65,7 @@ public class Board extends JFrame {
 	public Board(ChessModel title) {
 		
 		// Defini la couleur des cases
-		Color blackColor = new Color(209, 139, 71);
-		Color whiteColor = new Color(255, 206, 158);
+		
                 
                 //Initialisation du menu
                 menuBar = new JMenuBar();
@@ -82,19 +83,9 @@ public class Board extends JFrame {
                 
                 piece = new Icon[12];
                 
-                piece[0] = tourB;
-                piece[1] = chevalierB;
-                piece[2] = fouB;
-                piece[3] = reineB;
-                piece[4] = roiB;
-                piece[5] = pionB;
+                //Rempli un tableau pour chaque type de pièce en prenant en compte la couleur
+                this.initialiseTableau();
                 
-                piece[6] = tourN;
-                piece[7] = chevalierN;
-                piece[8] = fouN;
-                piece[9] = reineN;
-                piece[10] = roiN;
-                piece[11] = pionN;
 		
                 //Initialisation du plateau    
                 JLabel chessButton = null;
@@ -126,71 +117,49 @@ public class Board extends JFrame {
                     blackColor = whiteColor;
                     whiteColor = temp;
                 }
-                Plateau[0][0].setIcon(tourN);
-                Plateau[0][1].setIcon(chevalierN);
-                Plateau[0][2].setIcon(fouN);
-                Plateau[0][3].setIcon(roiN);
-                Plateau[0][4].setIcon(reineN);
-                Plateau[0][5].setIcon(fouN);
-                Plateau[0][6].setIcon(chevalierN);
-                Plateau[0][7].setIcon(tourN);
-                Plateau[1][0].setIcon(pionN);
-                Plateau[1][1].setIcon(pionN);
-                Plateau[1][2].setIcon(pionN);
-                Plateau[1][3].setIcon(pionN);
-                Plateau[1][4].setIcon(pionN);
-                Plateau[1][5].setIcon(pionN);
-                Plateau[1][6].setIcon(pionN);
-                Plateau[1][7].setIcon(pionN);
-                Plateau[7][0].setIcon(tourB);
-                Plateau[7][1].setIcon(chevalierB);
-                Plateau[7][2].setIcon(fouB);
-                Plateau[7][3].setIcon(roiB);
-                Plateau[7][4].setIcon(reineB);
-                Plateau[7][5].setIcon(fouB);
-                Plateau[7][6].setIcon(chevalierB);
-                Plateau[7][7].setIcon(tourB);
-                Plateau[6][0].setIcon(pionB);
-                Plateau[6][1].setIcon(pionB);
-                Plateau[6][2].setIcon(pionB);
-                Plateau[6][3].setIcon(pionB);
-                Plateau[6][4].setIcon(pionB);
-                Plateau[6][5].setIcon(pionB);
-                Plateau[6][6].setIcon(pionB);
-                Plateau[6][7].setIcon(pionB);
                 
-                
+                //Positionne les pieces sur le plateau
+                this.positionPiece();
+              
                 //Ajout des pieces dans la list des joueurs
                 this.addJoueurList();
                
                 //this.setMenuBar(mb);
-                menuBar.add(menu);
-                menuBar.add(menuBarJoueur);
-                menu_1.addActionListener( new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent ae) {
-                        chess.nouvellePartie();
-                    }
-                });
-                menu_2.addActionListener( new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent ae) {
-                        System.exit(1);
-                    }
-                });
-                menu.add(menu_1);
-                menu.add(menu_2);
+                this.initialiseMenu();
                 
-                this.setJMenuBar(menuBar);
-		this.setTitle("Jeu échec"); // Setting the title of board
-		this.setLayout(new GridLayout(8, 8)); // GridLayout will arrange elements in Grid Manager 8 X 8
-		this.setSize(650, 650); // Size of the chess board
-		this.setVisible(true);
+                
+		this.setTitle("Jeu échec");//Défini le titre de la frame
+		this.setLayout(new GridLayout(8, 8)); //définit une grille de 8 par 8 
+		this.setSize(650, 650); //Le plateau à une dimensions de 650 par 650 
+		this.setVisible(true);//Affiche la frame
 	}
         
-        
+        public void initialiseMenu()
+        {
+            menuBar.add(menu);//Ajoute un menu sur la bar (il sera constitué de 2 items)
+            menuBar.add(menuBarJoueur);//Ajoute au menu une barre qui indique le joueur
+            menu_1.addActionListener( new ActionListener() {//Définit une action sur l'item 1 du menu
+                @Override
+                 public void actionPerformed(ActionEvent ae) {
+                    nouvellePartie(ae); //Déclenche une nouvelle partie
+                }
+
+                
+            });
+            menu_2.addActionListener( new ActionListener() { //Définit une action sur l'item 2 du menu
+                @Override
+                public void actionPerformed(ActionEvent ae) {
+                    System.exit(1);//Force le porgramme à ce fermé.
+                }
+            });
+            menu.add(menu_1);//Ajoute les items au menu 
+            menu.add(menu_2);
+                
+            this.setJMenuBar(menuBar);
+        }
         public void addJoueurList()
         {
+            //Permet d'ajouter les pieces dans la liste du joueur en fonction de son code couleur
             joueur2.addIcon(tourN);
             joueur2.addIcon(chevalierN);
             joueur2.addIcon(fouN);
@@ -225,15 +194,115 @@ public class Board extends JFrame {
             joueur1.addIcon(pionB);
         }
         
-        public Joueur getJoueur(int valeur)
-        {
-            if(valeur==1)
-            {
-                return joueur1;
-            }
-            else
-            {
-                return joueur2;
-            }
+        public boolean mangePiece(String couleur,Joueur j,ImageIcon img)//La couleur qu'il à le droit de mangé
+        {                                                               //l'image qui veut manger
+           if(couleur == "noir") //Si la couleur est égale à noir
+           {
+               for (ImageIcon imageIcon : j.listImage) //On parcours la list de l'image du joueur adverse
+               {
+                   if(imageIcon == img)//Si il contient dans sa liste la pièce que l'on désire manger alors
+                    return true;//On retourne true
+                   else //Sinon
+                       return false; //On retourne false
+               }
+           }
+           else if(couleur == "blanc")//Si la couleur est égale à blanc
+           {
+               for (ImageIcon imageIcon : j.listImage) //On parcours la list de l'image du joueur adverse
+               {
+                   if(imageIcon == img)//Si il contient dans sa liste la pièce que l'on désire manger alors
+                    return true;//On retourne true
+                   else//Sinon
+                       return false;//On retourne false
+               }
+           }
+           
+           return false;
         }
+        
+        public void positionPiece(){
+            //Cette méthode permet de définir la position des pièces sur le plateau
+            Plateau[0][0].setIcon(tourN);
+            Plateau[0][1].setIcon(chevalierN);
+            Plateau[0][2].setIcon(fouN);
+            Plateau[0][3].setIcon(roiN);
+            Plateau[0][4].setIcon(reineN);
+            Plateau[0][5].setIcon(fouN);
+            Plateau[0][6].setIcon(chevalierN);
+            Plateau[0][7].setIcon(tourN);
+            Plateau[1][0].setIcon(pionN);
+            Plateau[1][1].setIcon(pionN);
+            Plateau[1][2].setIcon(pionN);
+            Plateau[1][3].setIcon(pionN);
+            Plateau[1][4].setIcon(pionN);
+            Plateau[1][5].setIcon(pionN);
+            Plateau[1][6].setIcon(pionN);
+            Plateau[1][7].setIcon(pionN);
+            Plateau[7][0].setIcon(tourB);
+            Plateau[7][1].setIcon(chevalierB);
+            Plateau[7][2].setIcon(fouB);
+            Plateau[7][3].setIcon(roiB);
+            Plateau[7][4].setIcon(reineB);
+            Plateau[7][5].setIcon(fouB);
+            Plateau[7][6].setIcon(chevalierB);
+            Plateau[7][7].setIcon(tourB);
+            Plateau[6][0].setIcon(pionB);
+            Plateau[6][1].setIcon(pionB);
+            Plateau[6][2].setIcon(pionB);
+            Plateau[6][3].setIcon(pionB);
+            Plateau[6][4].setIcon(pionB);
+            Plateau[6][5].setIcon(pionB);
+            Plateau[6][6].setIcon(pionB);
+            Plateau[6][7].setIcon(pionB);
+        }
+        
+        public void initialiseTableau()
+        {
+            //Rempli le tableau des pieces en fonctions de leurs types 
+            //Il sera utilisé pour vérifier quels types de pièces le joueur souhaite déplacer et ainsi
+            //Effectuer un déplacement qui lui est propre.
+            piece[0] = tourB;
+            piece[1] = chevalierB;
+            piece[2] = fouB;
+            piece[3] = reineB;
+            piece[4] = roiB;
+            piece[5] = pionB;
+                
+            piece[6] = tourN;
+            piece[7] = chevalierN;
+            piece[8] = fouN;
+            piece[9] = reineN;
+            piece[10] = roiN;
+            piece[11] = pionN;
+        }
+        
+        public void initBoard()
+        {
+            for(int i =0; i<8;i++){
+                for(int j = 0; j<8;j++)
+                {
+                     if (j % 2 == 0) {
+                         Plateau[i][j].setBackground(blackColor);
+                         Plateau[i][j].setIcon(null);
+                     }
+                     else
+                     {
+                        Plateau[i][j].setBackground(whiteColor);
+                        Plateau[i][j].setIcon(null);
+                     }
+                }
+                Color temp = blackColor;
+                blackColor = whiteColor;
+                whiteColor = temp;
+                
+            }
+            this.positionPiece();
+        }
+        
+        private void nouvellePartie(ActionEvent ae) {
+            chess.nouvellePartie();
+            this.initBoard();
+            this.menuBarJoueur.setText("Joueur "+chess.playersActu);
+         }
+    
 }

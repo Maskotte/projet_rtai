@@ -15,6 +15,12 @@ import projet_echec.Deplacement;
  */
 public class Pion extends Piece{
 
+    private int[][] position;
+    private int i ;
+    private int j;
+    int val;
+    private String couleur ;
+    
     /**
      * @return the couleur
      */
@@ -28,11 +34,7 @@ public class Pion extends Piece{
     public void setCouleur(String couleur) {
         this.couleur = couleur;
     }
-    private int[][] position;
-    private int i ;
-    private int j;
-    int val;
-    private String couleur ;
+    
 
     
     public Pion()
@@ -84,7 +86,7 @@ public class Pion extends Piece{
                 
                 if(d.getArrivee().getLigne() == d.getDepart().getLigne() && d.getDeplacementX() < 0)
                 {
-                    if(d.getDeplacementX() >= -2)
+                    if(d.getDeplacementX() >= -2 )
                     {
                         return true;
                     }

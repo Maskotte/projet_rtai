@@ -17,6 +17,6 @@ public abstract class Piece{
     
     
     public abstract boolean deplacementPossible(Deplacement d);
-    //public abstract void deplacer(Coordonnee depart, Coordonnee arrivee);
+    
     
 }

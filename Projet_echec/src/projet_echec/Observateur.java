@@ -9,8 +9,8 @@ package projet_echec;
  *
  * @author quent
  */
-interface Observateur {
-    void avertir(int i, int j);
+public interface Observateur {
+    void avertir(int i, int j,Board plateau);
     void avertirNewGame();
     void avertirFinPartie(boolean avecGagnant);
 }

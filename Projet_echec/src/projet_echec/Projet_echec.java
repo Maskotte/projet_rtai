@@ -21,8 +21,13 @@ public class Projet_echec {
         // TODO code application logic here
             //String title = "My Chess Board ";
             ChessModel chess = new ChessModel();
-		
-            Board chessBoard = new Board(chess);
+            
+            Board chessBoard1 = new Board(chess);
+            
+     
+            
+            
+
                 
     }
     
