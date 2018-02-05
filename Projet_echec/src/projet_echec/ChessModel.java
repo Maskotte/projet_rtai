@@ -156,12 +156,13 @@ public class ChessModel {
                     
                     plateau.Plateau[i][j].setIcon(temp1); // On place l'image sur la label qui ne contient pas d'image
                     this.temp1 = null; // supprime l'image stocké en mémoire
-                    this.setValueJoueur(-1, -1); // On remet par défaut les valeurs de X et Y en tampon
+                    
                     playersActu = this.getNextJoueur(); // On change de joueur 
                     plateau.menuBarJoueur.setText("Joueur "+playersActu); // On renseigne dans la frame dans le menu le joueur qui joue
                     this.nbCoups ++; // On augmente le nombre de coups
                     
                     avertirAllObservateurs(i, j);
+                   this.setValueJoueur(-1, -1); // On remet par défaut les valeurs de X et Y en tampon
                     
                 }
                 

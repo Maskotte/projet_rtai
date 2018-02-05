@@ -308,7 +308,7 @@ public class Board extends JFrame implements Observateur{
         public void update(int i, int j)
         {
             this.Plateau[i][j].setIcon(chess.temp2);
-
+            this.Plateau[chess.positionX][chess.positionY].setIcon(null);
             this.menuBarJoueur.setText("Joueur "+chess.playersActu);
         }
 
