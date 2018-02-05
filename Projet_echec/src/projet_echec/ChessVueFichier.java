@@ -29,7 +29,7 @@ public class ChessVueFichier implements Observateur {
     }
     
     @Override
-    public void avertir(int i, int j,Board plateau) {
+    public void avertir(int i, int j) {
         int joueurActuel = chess.playersActu;
         try {
             this.fw.append("Le joueur "+joueurActuel+" joue en "+i+";"+j+"\r\n");

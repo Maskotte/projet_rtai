@@ -17,7 +17,7 @@ public class ChessTextuelle implements Observateur{
     }
 
     @Override
-    public void avertir(int i, int j,Board plateau) {
+    public void avertir(int i, int j) {
         int joueurActuel = chess.getJoueur();
         System.out.println("Le joueur "+joueurActuel+" joue en case ["+i+"["+j+"]");
     }

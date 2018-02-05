@@ -10,7 +10,7 @@ package projet_echec;
  * @author quent
  */
 public interface Observateur {
-    void avertir(int i, int j,Board plateau);
+    void avertir(int i, int j);
     void avertirNewGame();
     void avertirFinPartie(boolean avecGagnant);
 }

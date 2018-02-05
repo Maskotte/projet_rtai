@@ -28,7 +28,7 @@ import javax.swing.JTextArea;
  *
  * @author tok
  */
-public class Board extends JFrame{
+public class Board extends JFrame implements Observateur{
 
     private ChessModel chess;
     public Icon[] piece;
@@ -305,4 +305,25 @@ public class Board extends JFrame{
             this.menuBarJoueur.setText("Joueur "+chess.playersActu);
          }
     
+        public void update(int i, int j)
+        {
+            this.Plateau[i][j].setIcon(chess.temp2);
+
+            this.menuBarJoueur.setText("Joueur "+chess.playersActu);
+        }
+
+    @Override
+    public void avertir(int i, int j) {
+        this.update(i, j); 
+    }
+
+    @Override
+    public void avertirNewGame() {
+        this.initBoard(); 
+    }
+
+    @Override
+    public void avertirFinPartie(boolean avecGagnant) {
+        System.out.println("On verra plus tard pour les gagnants");
+    }
 }

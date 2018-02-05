@@ -26,6 +26,7 @@ public class ChessModel {
     ArrayList<Observateur> joueur;
     JLabel temp = new JLabel();
     ImageIcon temp1 = new ImageIcon();
+    ImageIcon temp2 = new ImageIcon();
     
     int[][] plateau;
     int playersActu = 1;
@@ -77,6 +78,7 @@ public class ChessModel {
             if(positionX == -1 && positionY == -1 ) //Si les valeurs X et Y sont de -1 alors 
             {
                 this.temp1 = (ImageIcon) this.temp.getIcon(); //On récupère k'image ?  
+                this.temp2 = this.temp1;
                 this.setValueJoueur(i, j); //On mets les valeurs de i et j dans les valeurs X et Y 
                 mapD = new Coordonnee(i,j); //On enregistre les coordonnée grâce à i et j 
             }
@@ -159,8 +161,8 @@ public class ChessModel {
                     plateau.menuBarJoueur.setText("Joueur "+playersActu); // On renseigne dans la frame dans le menu le joueur qui joue
                     this.nbCoups ++; // On augmente le nombre de coups
                     
+                    avertirAllObservateurs(i, j);
                     
-                    //avertirAllObservateurs(i, j, plateau);
                 }
                 
                 
@@ -195,20 +197,20 @@ public class ChessModel {
         }
     }
     
-     // Ajouter k'observateur
+     // Ajouter l'observateur
     public void register(Observateur o) {
         this.joueur.add(o);
     }
     
-    // Retirer k'observateur
+    // Retirer l'observateur
     public void unRegister(Observateur o) {
         this.joueur.remove(o);
     }
     
     // Avertir TOUS les observateurs d'un coup
-    public void avertirAllObservateurs(int i, int j,Board plateau) {
+    public void avertirAllObservateurs(int i, int j) {
         for(Observateur o : this.joueur) {
-            o.avertir(i, j, plateau);
+            o.avertir(i, j);
         }
     }
     
@@ -251,6 +253,7 @@ public class ChessModel {
        
        
        nbCoups = 0;    
+       avertirNewGameAllObservateurs();
     }
  
     
