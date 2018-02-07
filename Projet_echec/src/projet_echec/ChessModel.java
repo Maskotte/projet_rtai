@@ -26,7 +26,7 @@ public class ChessModel {
     ArrayList<Observateur> joueur;
     JLabel temp = new JLabel();
     ImageIcon temp1 = new ImageIcon();
-    ImageIcon temp2 = new ImageIcon();
+
     
     int[][] plateau;
     int playersActu = 1;
@@ -69,7 +69,7 @@ public class ChessModel {
         //Récupère la case sélectionné
         this.temp = plateau.Plateau[i][j];
         
-        if(this.temp.getIcon() == null && this.temp1 == null) //si il n'y a pas d'image sur le label ou                                                   
+        if(this.temp.getIcon() == null && this.temp1 == null) //si il n'y a pas d'image sur le label                                                   
         {
             System.out.println("Erreur");
         }
@@ -78,7 +78,7 @@ public class ChessModel {
             if(positionX == -1 && positionY == -1 ) //Si les valeurs X et Y sont de -1 alors 
             {
                 this.temp1 = (ImageIcon) this.temp.getIcon(); //On récupère k'image ?  
-                this.temp2 = this.temp1;
+                
                 this.setValueJoueur(i, j); //On mets les valeurs de i et j dans les valeurs X et Y 
                 mapD = new Coordonnee(i,j); //On enregistre les coordonnée grâce à i et j 
             }
@@ -155,7 +155,7 @@ public class ChessModel {
                     plateau.Plateau[positionX][positionY].setIcon(null); //supprime l'image du tableau après que le joueur ai joué
                     
                     plateau.Plateau[i][j].setIcon(temp1); // On place l'image sur la label qui ne contient pas d'image
-                    this.temp1 = null; // supprime l'image stocké en mémoire
+                    
                     
                     playersActu = this.getNextJoueur(); // On change de joueur 
                     plateau.menuBarJoueur.setText("Joueur "+playersActu); // On renseigne dans la frame dans le menu le joueur qui joue
@@ -163,6 +163,7 @@ public class ChessModel {
                     
                     avertirAllObservateurs(i, j);
                    this.setValueJoueur(-1, -1); // On remet par défaut les valeurs de X et Y en tampon
+                   this.temp1 = null; // supprime l'image stocké en mémoire
                     
                 }
                 

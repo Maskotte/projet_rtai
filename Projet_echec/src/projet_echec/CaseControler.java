@@ -44,23 +44,26 @@ public class CaseControler extends MouseAdapter {
         {   
             
             
-            temp = echequier.Plateau[i][j];
-            if(verif > 0 && temp.getIcon() == null)
+            temp = echequier.Plateau[i][j]; //Récupère le label qui permet de faire l'action 
+            
+            if(verif != 0 && temp.getIcon() == null)//SI il y a déjà eu une vérification et que il n'y a pas d'image sur le label
             {
                 chess.play(i, j, echequier);
+                
                 verif = 0;
             }
             
             if(verif !=0 && temp1 !=null && temp.getIcon() !=null)
             {
                 chess.play(i, j, echequier);
+                
                 verif = 0;
             }
             
             if(verif == 0)//Si il n'y a pas encore eu de vérification alors
             {
                 temp1 = (ImageIcon) this.temp.getIcon();
-                
+                //temp.setBorder(BorderFactory.createLineBorder(Color.black));
                 if(chess.playersActu == 1) //Si le joueur 1 joue ou que la vérification n'a pas eu lieu
                 {
                     valeur = echequier.joueur1.verifList(temp1);// on vérifie que l'icon qui la sélectionné est bien dans sa liste
@@ -72,7 +75,9 @@ public class CaseControler extends MouseAdapter {
                     verif++;
                 }
                 if(valeur == true){ //Si la valeur retournée est vrai alors
+                    temp.setBorder(BorderFactory.createLineBorder(Color.black));
                     chess.play(i, j, echequier);
+                    
                 }
                 else //Sinon on affiche un petit message sympa
                     System.out.println("Ce n'est pas à toi de jouer tricheur:) ");
