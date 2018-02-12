@@ -49,7 +49,7 @@ public class CaseControler extends MouseAdapter {
             
             
             setTemp(echequier.Plateau[i][j]); //Récupère le label qui permet de faire l'action 
-            
+            System.out.println(i + " - " + j);
             if(verif == 0)//Si il n'y a pas encore eu de vérification alors
             {
                 temp1 = (ImageIcon) this.getTemp().getIcon();
@@ -83,6 +83,7 @@ public class CaseControler extends MouseAdapter {
                 if(chess.playersActu == 1 && getTemp().getIcon() != null) {
                 if(icone.substring(6,7) == "b") {
                     temp1 = (ImageIcon) getTemp().getIcon();
+                    setTemp(echequier.Plateau[i][j]);
                    // chess.play(i, j, echequier);
                 }
                 }
