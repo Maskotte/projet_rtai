@@ -29,6 +29,7 @@ public class Cavalier extends Piece{
     }
     
     private String couleur;
+   
     @Override
     public boolean deplacementPossible(Deplacement d) {
         /* On vérifie si la division de nos déplacements est égal à 2 ou 0.5,

@@ -46,20 +46,6 @@ public class CaseControler extends MouseAdapter {
             
             temp = echequier.Plateau[i][j]; //Récupère le label qui permet de faire l'action 
             
-            if(verif != 0 && temp.getIcon() == null)//SI il y a déjà eu une vérification et que il n'y a pas d'image sur le label
-            {
-                chess.play(i, j, echequier);
-                
-                verif = 0;
-            }
-            
-            if(verif !=0 && temp1 !=null && temp.getIcon() !=null)
-            {
-                chess.play(i, j, echequier);
-                
-                verif = 0;
-            }
-            
             if(verif == 0)//Si il n'y a pas encore eu de vérification alors
             {
                 temp1 = (ImageIcon) this.temp.getIcon();
@@ -67,12 +53,14 @@ public class CaseControler extends MouseAdapter {
                 if(chess.playersActu == 1) //Si le joueur 1 joue ou que la vérification n'a pas eu lieu
                 {
                     valeur = echequier.joueur1.verifList(temp1);// on vérifie que l'icon qui la sélectionné est bien dans sa liste
-                    verif++;
+                    verif = 1;
+                    System.out.println("tour joueur 1");
                 } 
-                else// sinon il vérifira la liste du joueur 2 
+                else if(chess.playersActu == 2)// sinon il vérifira la liste du joueur 2 
                 {
                     valeur = echequier.joueur2.verifList(temp1);
-                    verif++;
+                    verif = 1;
+                    System.out.println("tour joueur 2");
                 }
                 if(valeur == true){ //Si la valeur retournée est vrai alors
                     temp.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -83,6 +71,26 @@ public class CaseControler extends MouseAdapter {
                     System.out.println("Ce n'est pas à toi de jouer tricheur:) ");
                 
             }
+            
+            if(verif != 0) {
+            if(temp.getIcon() == null)//SI il y a déjà eu une vérification et que il n'y a pas d'image sur le label
+            {
+                chess.play(i, j, echequier);
+                //chess.getNextJoueur();
+                verif = 0;
+            }
+            
+            
+            
+            else if(temp1 !=null && temp.getIcon() !=null)
+            {
+                chess.play(i, j, echequier);
+                //chess.getNextJoueur();
+                verif = 0;
+            }
+            }
+            
+            
             
             
             
