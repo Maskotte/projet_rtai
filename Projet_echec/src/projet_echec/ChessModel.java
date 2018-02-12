@@ -47,7 +47,7 @@ public class ChessModel {
     
     Deplacement dep;
 
-    
+    CaseControler caseC;
     public ChessModel()
     {
         this.joueur = new ArrayList<Observateur>();
@@ -68,13 +68,14 @@ public class ChessModel {
         
         //Récupère la case sélectionné
         this.temp = plateau.Plateau[i][j];
+        System.out.println(this.temp);
         
-        if(this.temp.getIcon() == null && this.temp1 == null) //si il n'y a pas d'image sur le label                                                   
+       /* if(this.temp.getIcon() == null && this.temp1 == null) //si il n'y a pas d'image sur le label                                                   
         {
             System.out.println("Erreur");
-        }
-        else
-        {
+        }*/
+        //else
+        //{
             if(positionX == -1 && positionY == -1 ) //Si les valeurs X et Y sont de -1 alors 
             {
                 this.temp1 = (ImageIcon) this.temp.getIcon(); //On récupère k'image ?  
@@ -166,10 +167,9 @@ public class ChessModel {
                    this.temp1 = null; // supprime l'image stocké en mémoire
                     
                 }
-                
-                
+
             }
-        }
+        //}
     }
     
     public String toString()
