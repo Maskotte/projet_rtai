@@ -69,6 +69,9 @@ public class ChessModel {
         //Récupère la case sélectionné
         this.temp = plateau.Plateau[i][j];
         System.out.println(this.temp);
+        this.temp1 = (ImageIcon) this.temp.getIcon();
+        //String test = (""+temp1).substring(6,7);
+        
         
        /* if(this.temp.getIcon() == null && this.temp1 == null) //si il n'y a pas d'image sur le label                                                   
         {
@@ -76,16 +79,19 @@ public class ChessModel {
         }*/
         //else
         //{
-            if(positionX == -1 && positionY == -1 ) //Si les valeurs X et Y sont de -1 alors 
+        //if(this.temp1 != null) {
+            if(positionX == -1 && positionY == -1 || (""+temp1).substring(6,7) == "b") //Si les valeurs X et Y sont de -1 alors 
             {
-                this.temp1 = (ImageIcon) this.temp.getIcon(); //On récupère k'image ?  
-                
+                //this.temp1 = (ImageIcon) this.temp.getIcon(); //On récupère k'image ?  
+                System.out.println("test 1");
                 this.setValueJoueur(i, j); //On mets les valeurs de i et j dans les valeurs X et Y 
                 mapD = new Coordonnee(i,j); //On enregistre les coordonnée grâce à i et j 
             }
+       // }
             else //sinon 
             {
                 //renseigne les coordonnee d'arrivee
+                System.out.println("test 2");
                 mapA = new Coordonnee(i,j);
                 
                 //Renseigne le déplacement voulu avec les coordonnee de départ et d'arrivé

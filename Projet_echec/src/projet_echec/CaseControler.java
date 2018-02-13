@@ -90,7 +90,7 @@ public class CaseControler extends MouseAdapter {
                 
                 if(getTemp().getIcon() == null)//SI il y a déjà eu une vérification et que il n'y a pas d'image sur le label
                 {
-                    chess.play(i, j, echequier);
+                    chess.play(this.i, this.j, this.echequier);
                     //chess.getNextJoueur();
                     verif = 0;
                 }
@@ -99,7 +99,7 @@ public class CaseControler extends MouseAdapter {
 
                 else if(temp1 !=null && getTemp().getIcon() !=null)
                 {
-                    chess.play(i, j, echequier);
+                    chess.play(this.i, this.j, this.echequier);
                     //chess.getNextJoueur();
                     verif = 0;
                 }
