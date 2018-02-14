@@ -36,7 +36,7 @@ public class Board extends JFrame implements Observateur{
     Color whiteColor = new Color(255, 206, 158);
     Joueur joueur1 ; 
     Joueur joueur2 ;
-    JLabel Plateau[][];
+    public JLabel Plateau[][];
     //Menu
     JMenuBar menuBar ;
     JMenu menuBarJoueur;

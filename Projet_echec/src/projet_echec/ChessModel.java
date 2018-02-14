@@ -69,6 +69,7 @@ public class ChessModel {
         //Récupère la case sélectionné
         this.temp = plateau.Plateau[i][j];
 
+        System.out.println("Entrez play");
         if(playersActu == 1 && plateau.joueur1.verifList(temp1) == true && temp.getIcon() != null)
         {
             this.temp1 = (ImageIcon) this.temp.getIcon();
@@ -91,9 +92,10 @@ public class ChessModel {
         }
         else if(temp.getIcon() == null)//sinon 
         {
-            //renseigne les coordonnee d'arrivee
-            //System.out.println(temp1);
+            
+            //renseigne les coordonnee de départ
             mapD = new Coordonnee(positionX, positionY);
+            //renseigne les coordonnee d'arrivee
             mapA = new Coordonnee(i,j);
                 
             //Renseigne le déplacement voulu avec les coordonnee de départ et d'arrivé
@@ -264,6 +266,37 @@ public class ChessModel {
        nbCoups = 0;    
        avertirNewGameAllObservateurs();
     }
- 
     
+    public boolean mangePiece(ImageIcon image,Board plateau)
+    {
+        if(playersActu == 1 )
+        {
+            for (ImageIcon imageIcon : plateau.joueur2.listImage) 
+            {
+                if(image == imageIcon)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        else if(playersActu == 2)
+        {
+            for (ImageIcon imageIcon : plateau.joueur1.listImage) 
+            {
+                if(image == imageIcon)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+         return false;  
+    }
 }

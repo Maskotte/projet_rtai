@@ -52,35 +52,32 @@ public class CaseControler extends MouseAdapter {
             //System.out.println(i + " - " + j);
             if(verif == 0)//Si il n'y a pas encore eu de vérification alors
             {
+                System.out.println("0");
                 temp1 = (ImageIcon) this.getTemp().getIcon();
                
                 if(chess.playersActu == 1) //Si le joueur 1 joue ou que la vérification n'a pas eu lieu
                 {
-                    valeur = echequier.joueur1.verifList(temp1);// on vérifie que l'icon qui la sélectionné est bien dans sa liste
-                    //verif = 1;   
+                    valeur = echequier.joueur1.verifList(temp1);// on vérifie que l'icon qui la sélectionné est bien dans sa liste 
                 } 
                 else if(chess.playersActu == 2)// sinon il vérifira la liste du joueur 2 
                 {
                     valeur = echequier.joueur2.verifList(temp1);
-                    //verif = 1;    
                 }
                 if(valeur == true){ //Si la valeur retournée est vrai alors
                     verif = 1 ;
                 }
             }
-            System.out.println(""+valeur);
             if(verif != 0 || temp.getIcon() == null) {
                 
                 
-                if(getTemp().getIcon() == null)//SI il n'y a pas d'image sur le label
+                if(getTemp().getIcon() == null )//SI il n'y a pas d'image sur le label
                 {
+                    System.out.println("1");
                     chess.play(this.i, this.j, this.echequier);
                     verif = 0;
                 }
                 else if(temp1 !=null && getTemp().getIcon() !=null)
-                {
-                    chess.play(this.i, this.j, this.echequier);
-                }
+                 chess.play(this.i, this.j, this.echequier);
             }  
         }
 

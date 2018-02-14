@@ -5,6 +5,9 @@
  */
 package Piece;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import projet_echec.Board;
 import projet_echec.Coordonnee;
 import projet_echec.Deplacement;
 
@@ -29,18 +32,10 @@ public class Tour extends Piece{
             
         }
            
-            /**System.out.println(""+d.getDepart().getLigne());
-            System.out.println(""+d.getDepart().getColonne());
-            System.out.println(""+d.getArrivee().getLigne());
-            System.out.println(""+d.getArrivee().getColonne());
-            System.out.println(""+d.getDeplacementX());
-            System.out.println(""+d.getDeplacementY());*/
         return false;
     }
 
+    
 
-    /*@Override
-    public void deplacer(Coordonnee depart, Coordonnee arrivee) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/
+   
 }
