@@ -11,11 +11,10 @@ import Piece.Pion;
 import Piece.Reine;
 import Piece.Roi;
 import Piece.Tour;
-import java.awt.GridLayout;
+import java.awt.Color;
 import java.util.ArrayList;
-import javax.swing.Icon;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 
 /**
@@ -26,6 +25,7 @@ public class ChessModel {
     ArrayList<Observateur> joueur;
     JLabel temp = new JLabel();
     ImageIcon temp1 = new ImageIcon();
+    
 
     
     int[][] plateau;
@@ -72,17 +72,21 @@ public class ChessModel {
         if(playersActu == 1 && plateau.joueur1.verifList(temp1) == true && temp.getIcon() != null)
         {
             this.temp1 = (ImageIcon) this.temp.getIcon();
+            plateau.Plateau[positionX][positionY].setBorder(null);
+            temp.setBorder(BorderFactory.createLineBorder(Color.black));
             setValueJoueur(i, j);
         }
         else if(playersActu == 2 && plateau.joueur2.verifList(temp1) == true && temp.getIcon() != null)
         {
             this.temp1 = (ImageIcon) this.temp.getIcon();
+            plateau.Plateau[positionX][positionY].setBorder(null);
+            temp.setBorder(BorderFactory.createLineBorder(Color.black));
             setValueJoueur(i, j);
         }
         if(positionX == -1 && positionY == -1) //Si les valeurs X et Y sont de -1 alors 
         {
-            this.temp1 = (ImageIcon) this.temp.getIcon(); //On récupère k'image ?  
-            System.out.println("test 1");
+            this.temp1 = (ImageIcon) this.temp.getIcon(); //On récupère k'image ?
+            temp.setBorder(BorderFactory.createLineBorder(Color.black));
             this.setValueJoueur(i, j); //On mets les valeurs de i et j dans les valeurs X et Y  
         }
         else if(temp.getIcon() == null)//sinon 
@@ -157,16 +161,16 @@ public class ChessModel {
                 if(valeur == true) // Si le déplacement est possible
                 {
                     
-                    plateau.Plateau[positionX][positionY].setIcon(null); //supprime l'image du tableau après que le joueur ai joué
-                    
+                    plateau.Plateau[positionX][positionY].setIcon(null); //supprime l'image du tableau après que le joueur ai joué 
                     plateau.Plateau[i][j].setIcon(temp1); // On place l'image sur la label qui ne contient pas d'image
                     
+                    plateau.Plateau[positionX][positionY].setBorder(null);
                     
                     playersActu = this.getNextJoueur(); // On change de joueur 
                     plateau.menuBarJoueur.setText("Joueur "+playersActu); // On renseigne dans la frame dans le menu le joueur qui joue
                     this.nbCoups ++; // On augmente le nombre de coups
                     
-                    avertirAllObservateurs(i, j);
+                   avertirAllObservateurs(i, j);
                    this.setValueJoueur(-1, -1); // On remet par défaut les valeurs de X et Y en tampon
                    this.temp1 = null; // supprime l'image stocké en mémoire
                     

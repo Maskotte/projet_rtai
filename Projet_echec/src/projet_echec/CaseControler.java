@@ -57,30 +57,20 @@ public class CaseControler extends MouseAdapter {
                 if(chess.playersActu == 1) //Si le joueur 1 joue ou que la vérification n'a pas eu lieu
                 {
                     valeur = echequier.joueur1.verifList(temp1);// on vérifie que l'icon qui la sélectionné est bien dans sa liste
-                        verif = 1;   
+                    //verif = 1;   
                 } 
                 else if(chess.playersActu == 2)// sinon il vérifira la liste du joueur 2 
                 {
                     valeur = echequier.joueur2.verifList(temp1);
-                        verif = 1;    
+                    //verif = 1;    
                 }
                 if(valeur == true){ //Si la valeur retournée est vrai alors
-                    getTemp().setBorder(BorderFactory.createLineBorder(Color.black));
-                    System.out.println("case en "+i+"-"+j);
-                    
-                }  
+                    verif = 1 ;
+                }
             }
-            
-            if(verif != 0) {
-                /*String icone = "" + temp1;
-                if(chess.playersActu == 1 && getTemp().getIcon() != null) {
-                    if(icone.substring(6,7) == "b") {
-                        temp1 = (ImageIcon) getTemp().getIcon();
-                        setTemp(echequier.Plateau[i][j]);
-                        System.out.println("test controleur 1");
-                        
-                    }
-                }*/
+            System.out.println(""+valeur);
+            if(verif != 0 || temp.getIcon() == null) {
+                
                 
                 if(getTemp().getIcon() == null)//SI il n'y a pas d'image sur le label
                 {
@@ -90,14 +80,8 @@ public class CaseControler extends MouseAdapter {
                 else if(temp1 !=null && getTemp().getIcon() !=null)
                 {
                     chess.play(this.i, this.j, this.echequier);
-                    verif = 0;
                 }
-            }
-            
-            
-            
-            
-            
+            }  
         }
 
     /**
