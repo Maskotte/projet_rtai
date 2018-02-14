@@ -23,10 +23,10 @@ public class Projet_echec {
             ChessModel chess = new ChessModel();
             
             Board chessBoard1 = new Board(chess);
-            Board chessBoard2 = new Board(chess);
+            //Board chessBoard2 = new Board(chess);
      
             chess.register(chessBoard1);
-            chess.register(chessBoard2);
+            //chess.register(chessBoard2);
             
             
             

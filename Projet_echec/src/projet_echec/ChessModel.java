@@ -68,37 +68,35 @@ public class ChessModel {
         
         //Récupère la case sélectionné
         this.temp = plateau.Plateau[i][j];
-        System.out.println(this.temp);
-        this.temp1 = (ImageIcon) this.temp.getIcon();
-        //String test = (""+temp1).substring(6,7);
-        
-        
-       /* if(this.temp.getIcon() == null && this.temp1 == null) //si il n'y a pas d'image sur le label                                                   
+
+        if(playersActu == 1 && plateau.joueur1.verifList(temp1) == true && temp.getIcon() != null)
         {
-            System.out.println("Erreur");
-        }*/
-        //else
-        //{
-        //if(this.temp1 != null) {
-            if(positionX == -1 && positionY == -1 || (""+temp1).substring(6,7) == "b") //Si les valeurs X et Y sont de -1 alors 
-            {
-                //this.temp1 = (ImageIcon) this.temp.getIcon(); //On récupère k'image ?  
-                System.out.println("test 1");
-                this.setValueJoueur(i, j); //On mets les valeurs de i et j dans les valeurs X et Y 
-                mapD = new Coordonnee(i,j); //On enregistre les coordonnée grâce à i et j 
-            }
-       // }
-            else //sinon 
-            {
-                //renseigne les coordonnee d'arrivee
-                System.out.println("test 2");
-                mapA = new Coordonnee(i,j);
+            this.temp1 = (ImageIcon) this.temp.getIcon();
+            setValueJoueur(i, j);
+        }
+        else if(playersActu == 2 && plateau.joueur2.verifList(temp1) == true && temp.getIcon() != null)
+        {
+            this.temp1 = (ImageIcon) this.temp.getIcon();
+            setValueJoueur(i, j);
+        }
+        if(positionX == -1 && positionY == -1) //Si les valeurs X et Y sont de -1 alors 
+        {
+            this.temp1 = (ImageIcon) this.temp.getIcon(); //On récupère k'image ?  
+            System.out.println("test 1");
+            this.setValueJoueur(i, j); //On mets les valeurs de i et j dans les valeurs X et Y  
+        }
+        else if(temp.getIcon() == null)//sinon 
+        {
+            //renseigne les coordonnee d'arrivee
+            //System.out.println(temp1);
+            mapD = new Coordonnee(positionX, positionY);
+            mapA = new Coordonnee(i,j);
                 
-                //Renseigne le déplacement voulu avec les coordonnee de départ et d'arrivé
-                dep = new Deplacement(mapD,mapA);
+            //Renseigne le déplacement voulu avec les coordonnee de départ et d'arrivé
+            dep = new Deplacement(mapD,mapA);
                 
                 
-                for(int k = 0 ; k< plateau.piece.length; k++){ // On parcours le tableau de pièces
+            for(int k = 0 ; k< plateau.piece.length; k++){ // On parcours le tableau de pièces
                 
                     if(plateau.piece[k] == temp1) //Si une pièce correspond à l'image récupéré en tampon alors 
                     {
@@ -175,7 +173,6 @@ public class ChessModel {
                 }
 
             }
-        //}
     }
     
     public String toString()
