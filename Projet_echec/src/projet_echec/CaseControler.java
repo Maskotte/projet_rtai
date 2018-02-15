@@ -22,8 +22,7 @@ public class CaseControler extends MouseAdapter {
         int j;
         int verif = 0;
         boolean valeur = false;
-        boolean valeurJ1 = false;
-        boolean valeurJ2 = false;
+        boolean valeurM = false;
         javax.swing.border.Border blackline = BorderFactory.createLineBorder(Color.black);
         private JLabel temp = new JLabel();
         ImageIcon temp1 = new ImageIcon();
@@ -52,30 +51,26 @@ public class CaseControler extends MouseAdapter {
             //System.out.println(i + " - " + j);
             if(verif == 0)//Si il n'y a pas encore eu de vérification alors
             {
-                System.out.println("0");
                 temp1 = (ImageIcon) this.getTemp().getIcon();
                
                 if(chess.playersActu == 1) //Si le joueur 1 joue ou que la vérification n'a pas eu lieu
                 {
                     valeur = echequier.joueur1.verifList(temp1);// on vérifie que l'icon qui la sélectionné est bien dans sa liste 
+                    valeurM = chess.mangePiece(temp1, echequier);
                 } 
                 else if(chess.playersActu == 2)// sinon il vérifira la liste du joueur 2 
                 {
                     valeur = echequier.joueur2.verifList(temp1);
+                    valeurM = chess.mangePiece(temp1, echequier);
                 }
-                if(valeur == true){ //Si la valeur retournée est vrai alors
+                if(valeur == true || valeurM == true)//Si la valeur retournée est vrai alors
                     verif = 1 ;
-                }
             }
             if(verif != 0 || temp.getIcon() == null) {
                 
                 
                 if(getTemp().getIcon() == null )//SI il n'y a pas d'image sur le label
-                {
-                    System.out.println("1");
-                    chess.play(this.i, this.j, this.echequier);
-                    verif = 0;
-                }
+                 chess.play(this.i, this.j, this.echequier);
                 else if(temp1 !=null && getTemp().getIcon() !=null)
                  chess.play(this.i, this.j, this.echequier);
             }  

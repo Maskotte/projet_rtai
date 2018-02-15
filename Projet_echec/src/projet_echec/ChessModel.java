@@ -69,30 +69,35 @@ public class ChessModel {
         //Récupère la case sélectionné
         this.temp = plateau.Plateau[i][j];
 
-        System.out.println("Entrez play");
+
         if(playersActu == 1 && plateau.joueur1.verifList(temp1) == true && temp.getIcon() != null)
         {
             this.temp1 = (ImageIcon) this.temp.getIcon();
             plateau.Plateau[positionX][positionY].setBorder(null);
             temp.setBorder(BorderFactory.createLineBorder(Color.black));
+            System.out.println("Pièce sélectionné en "+i+" - "+""+j+" par le joueur "+playersActu);
             setValueJoueur(i, j);
         }
-        else if(playersActu == 2 && plateau.joueur2.verifList(temp1) == true && temp.getIcon() != null)
+        if(playersActu == 2 && plateau.joueur2.verifList(temp1) == true && temp.getIcon() != null)
         {
+            System.out.println("Entrez play joueur 2");
             this.temp1 = (ImageIcon) this.temp.getIcon();
             plateau.Plateau[positionX][positionY].setBorder(null);
             temp.setBorder(BorderFactory.createLineBorder(Color.black));
+            System.out.println("Pièce sélectionné en "+i+" - "+""+j+" par le joueur "+playersActu);
             setValueJoueur(i, j);
         }
         if(positionX == -1 && positionY == -1) //Si les valeurs X et Y sont de -1 alors 
         {
             this.temp1 = (ImageIcon) this.temp.getIcon(); //On récupère k'image ?
             temp.setBorder(BorderFactory.createLineBorder(Color.black));
+            
+            System.out.println("Pièce sélectionné en "+i+" - "+""+j+" par le joueur "+playersActu);
             this.setValueJoueur(i, j); //On mets les valeurs de i et j dans les valeurs X et Y  
         }
-        else if(temp.getIcon() == null)//sinon 
+        else if(temp.getIcon() == null )//sinon 
         {
-            
+            System.out.println("Entrez play");
             //renseigne les coordonnee de départ
             mapD = new Coordonnee(positionX, positionY);
             //renseigne les coordonnee d'arrivee
@@ -168,6 +173,8 @@ public class ChessModel {
                     
                     plateau.Plateau[positionX][positionY].setBorder(null);
                     
+                    System.out.println(this.toString(i,j)); //Ecris dans le buffer
+                    
                     playersActu = this.getNextJoueur(); // On change de joueur 
                     plateau.menuBarJoueur.setText("Joueur "+playersActu); // On renseigne dans la frame dans le menu le joueur qui joue
                     this.nbCoups ++; // On augmente le nombre de coups
@@ -181,17 +188,9 @@ public class ChessModel {
             }
     }
     
-    public String toString()
+    public String toString(int i, int j)
     {
-        String retour ="";
-        for(int i = 0; i < 8; i++) {
-            retour += Integer.toString(i);
-            for(int j = 0; j < 8; i++) {
-                retour += " "+Integer.toString(j);
-            }
-            retour += "\r\n";
-        }
-        return retour;
+        return "Déplacement en "+i+" - "+""+j+" par le joueur "+playersActu;
     }
     
     
@@ -269,19 +268,23 @@ public class ChessModel {
     
     public boolean mangePiece(ImageIcon image,Board plateau)
     {
+        boolean valeur = false;
         if(playersActu == 1 )
         {
             for (ImageIcon imageIcon : plateau.joueur2.listImage) 
             {
                 if(image == imageIcon)
                 {
-                    return true;
+                    valeur =  true;
                 }
                 else
                 {
-                    return false;
+                    valeur =  false;
                 }
+                if(valeur == true)
+                return valeur;
             }
+            
         }
         else if(playersActu == 2)
         {
@@ -289,14 +292,17 @@ public class ChessModel {
             {
                 if(image == imageIcon)
                 {
-                    return true;
+                    valeur =  true;
                 }
                 else
                 {
-                    return false;
+                    valeur =  false;
                 }
+                 if(valeur == true)
+                return valeur;
             }
+           
         }
-         return false;  
+         return valeur;  
     }
 }
