@@ -70,7 +70,7 @@ public class ChessModel {
         this.temp = plateau.Plateau[i][j];
 
 
-        if(playersActu == 1 && plateau.joueur1.verifList(temp1) == true && temp.getIcon() != null)
+        /*if(playersActu == 1 && plateau.joueur1.verifList(temp1) && temp.getIcon() != null)
         {
             this.temp1 = (ImageIcon) this.temp.getIcon();
             plateau.Plateau[positionX][positionY].setBorder(null);
@@ -78,7 +78,7 @@ public class ChessModel {
             System.out.println("Pièce sélectionné en "+i+" - "+""+j+" par le joueur "+playersActu);
             setValueJoueur(i, j);
         }
-        if(playersActu == 2 && plateau.joueur2.verifList(temp1) == true && temp.getIcon() != null)
+        if(playersActu == 2 && plateau.joueur2.verifList(temp1) && temp.getIcon() != null)
         {
             System.out.println("Entrez play joueur 2");
             this.temp1 = (ImageIcon) this.temp.getIcon();
@@ -86,7 +86,7 @@ public class ChessModel {
             temp.setBorder(BorderFactory.createLineBorder(Color.black));
             System.out.println("Pièce sélectionné en "+i+" - "+""+j+" par le joueur "+playersActu);
             setValueJoueur(i, j);
-        }
+        }*/
         if(positionX == -1 && positionY == -1) //Si les valeurs X et Y sont de -1 alors 
         {
             this.temp1 = (ImageIcon) this.temp.getIcon(); //On récupère k'image ?
@@ -95,7 +95,7 @@ public class ChessModel {
             System.out.println("Pièce sélectionné en "+i+" - "+""+j+" par le joueur "+playersActu);
             this.setValueJoueur(i, j); //On mets les valeurs de i et j dans les valeurs X et Y  
         }
-        else if(temp.getIcon() == null )//sinon 
+        else if(temp.getIcon() == null || temp1 != null)//sinon 
         {
             System.out.println("Entrez play");
             //renseigne les coordonnee de départ
